@@ -1,0 +1,126 @@
+{
+  "Metadata": {
+    "title": "LivingBots — Igor Felipe",
+    "description": "Software que parece vivo: jogos, conceitos web e consultoria técnica por Igor Felipe, desenvolvedor solo na LivingBots."
+  },
+  "Nav": {
+    "games": "Jogos",
+    "web": "Web",
+    "consulting": "Consultoria",
+    "factory": "Fábrica",
+    "contact": "Contato",
+    "languageToggle": "Idioma"
+  },
+  "Hero": {
+    "eyebrow": "LivingBots",
+    "tagline": "Crio software que parece vivo.",
+    "sub": "Jogos, sites e código mais saudável — por Igor Felipe, um desenvolvedor só, com 16 anos de estrada e o hábito de entregar em pequenos checkpoints.",
+    "ctaGames": "Jogos",
+    "ctaConsulting": "Trabalhar comigo"
+  },
+  "Orbit": {
+    "heading": "O que eu faço",
+    "core": "LivingBots",
+    "games": "Jogos",
+    "web": "Web",
+    "consulting": "Consultoria"
+  },
+  "Games": {
+    "heading": "Jogos",
+    "intro": "Quatro jogos, cada um etiquetado com honestidade sobre o estágio em que realmente está.",
+    "items": {
+      "shooting-stars": {
+        "status": "Em desenvolvimento — jogável",
+        "blurb": "Enfrente a guerra sem fim e faça o céu cair aos seus pés. Híbrido top-down entre Vampire Survivors e tower defense, de olho no CrazyGames. i18n EN/pt-BR."
+      },
+      "stack-rivals": {
+        "status": "Em desenvolvimento — jogável",
+        "blurb": "Jogo de empilhamento de precisão. Estética synthwave, mapa de calor de mortes, desafio diário com seed fixa, 7 idiomas. SDK da CrazyGames integrado, lançamento pendente."
+      },
+      "bomb-arena": {
+        "status": "Demo jogável de capacidade",
+        "blurb": "Artilharia estilo Gunbound com física real no servidor — construído como demo técnica para um cliente de plataforma de jogos competitivos."
+      },
+      "orbit-runner": {
+        "status": "Protótipo jogável",
+        "blurb": "Arcade de um só polegar — um ponto que gruda em planetas em órbita. Arquitetura anti-cheat (verificação por replay), design de economia com fork de modificadores."
+      }
+    },
+    "playLabel": "Jogar",
+    "itchLabel": "itch.io",
+    "publishedHeading": "Publicados no itch.io",
+    "published": {
+      "arcanes": {
+        "blurb": "Explore a terra de Hyperion e todas as suas provações."
+      },
+      "smplanes": {
+        "blurb": "Jogue contra todo mundo neste jogo frenético."
+      }
+    },
+    "closingLine": "Jogos anteriores foram publicados na Google Play e desde então foram removidos da loja."
+  },
+  "Web": {
+    "heading": "Web",
+    "intro": "Trabalhos de conceito e demonstração: sites feitos para mostrar o que eu construiria para você.",
+    "items": {
+      "acai-joca": {
+        "name": "Açaí do Joca Jr.",
+        "label": "Conceito",
+        "blurb": "Conceito de landing page de rolagem única para uma marca local de açaí, feito para captação de leads B2B."
+      },
+      "gaming-platform": {
+        "name": "Plataforma de jogos competitivos (anonimizada)",
+        "label": "Engajamento ativo",
+        "blurb": "Assessoria técnica em andamento: níveis de proposta de engajamento e análise de arquitetura de backend (SpacetimeDB vs. Nakama), com o Bomb Arena como demo de capacidade."
+      }
+    }
+  },
+  "Consulting": {
+    "heading": "Consultoria",
+    "intro": "Orientação técnica para founders e “vibe coders” construindo com IA — fluxo de desenvolvimento, segurança, arquitetura.",
+    "stages": {
+      "see": {
+        "label": "Ver",
+        "desc": "Um scanner varre todo o código, expondo cada bug já existente."
+      },
+      "sense": {
+        "label": "Pressentir",
+        "desc": "Alertas pulsantes exatamente onde as falhas estão prestes a acontecer."
+      },
+      "fix": {
+        "label": "Corrigir",
+        "desc": "Um enxame de bots conserta o que está quebrado."
+      },
+      "strengthen": {
+        "label": "Fortalecer",
+        "desc": "Uma treliça se fecha ao redor do código recuperado, para que continue assim."
+      }
+    },
+    "offersHeading": "Como podemos trabalhar juntos",
+    "offers": {
+      "audit": "Auditoria pontual",
+      "accompaniment": "Acompanhamento contínuo",
+      "partnership": "Parceria de desenvolvimento"
+    }
+  },
+  "Factory": {
+    "heading": "A Fábrica",
+    "intro": "Issues do GitHub → workflows do Inngest → Claude Code rodando headless → gates determinísticos de CI → branches de release por ticket, regressão em dois estágios, padrão de adapter com trusted-ref para que branches de PR não confiáveis não consigam escalar permissões.",
+    "framing": "Rodo minha própria fábrica de software — eu escrevo os tickets, o pipeline implementa.",
+    "gatesHeading": "Os gates que todo ticket precisa atravessar"
+  },
+  "Contact": {
+    "heading": "Contato",
+    "copy": "Me conte o que você está construindo — eu te digo com sinceridade se posso ajudar e como seria o primeiro checkpoint.",
+    "emailCta": "Me mande um email",
+    "linksHeading": "Outros canais",
+    "links": {
+      "github": "GitHub",
+      "itch": "itch.io",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "Footer": {
+    "line": "LivingBots — Igor Felipe"
+  }
+}
