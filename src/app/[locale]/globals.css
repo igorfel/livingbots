@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #0b0e14;
+  --color-panel: #12161f;
+  --color-hairline: #232838;
+  --color-fg: #e8ecf1;
+  --color-fg-muted: #7c8496;
+  --color-worker: #3dd6ff;
+  --color-foreman: #ff3d6e;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-panel: var(--color-panel);
+  --color-hairline: var(--color-hairline);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-worker: var(--color-worker);
+  --color-foreman: var(--color-foreman);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.arena-hit {
+  box-shadow: 0 0 0 2px var(--color-worker);
+  transition: box-shadow 0.3s ease-out;
+}
+
+.stage-active {
+  border-color: var(--color-worker);
+  transition: border-color 0.3s ease-out;
+}
+
+@keyframes nav-companion-blink {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes envelope-fly {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(70px, -160px) rotate(14deg);
+    opacity: 0;
+  }
+}
+
+.envelope-fly {
+  animation: envelope-fly 0.65s ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

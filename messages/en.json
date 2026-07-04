@@ -1,0 +1,126 @@
+{
+  "Metadata": {
+    "title": "LivingBots — Igor Felipe",
+    "description": "Software that feels alive: games, web concepts, and technical consulting by Igor Felipe, solo developer at LivingBots."
+  },
+  "Nav": {
+    "games": "Games",
+    "web": "Web",
+    "consulting": "Consulting",
+    "factory": "Factory",
+    "contact": "Contact",
+    "languageToggle": "Language"
+  },
+  "Hero": {
+    "eyebrow": "LivingBots",
+    "tagline": "I build software that feels alive.",
+    "sub": "Games, websites, and healthier codebases — by Igor Felipe, one developer with 16 years of code and a habit of shipping in small checkpoints.",
+    "ctaGames": "Play the games",
+    "ctaConsulting": "Work with me"
+  },
+  "Orbit": {
+    "heading": "What I do",
+    "core": "LivingBots",
+    "games": "Games",
+    "web": "Web",
+    "consulting": "Consulting"
+  },
+  "Games": {
+    "heading": "Games",
+    "intro": "Four games, each honestly labeled with where it actually stands.",
+    "items": {
+      "shooting-stars": {
+        "status": "In development — playable",
+        "blurb": "Face the endless war, and make the sky fall at your feet. Top-down Vampire Survivors × tower defense hybrid, targeting CrazyGames. i18n EN/pt-BR."
+      },
+      "stack-rivals": {
+        "status": "In development — playable",
+        "blurb": "Precision stacking game. Synthwave aesthetic, heatmap death-tracking, seeded daily challenge, 7 locales. CrazyGames SDK integrated, release pending."
+      },
+      "bomb-arena": {
+        "status": "Playable proof of capability",
+        "blurb": "Gunbound-style artillery with real server-side physics — built as a technical demo for a competitive-gaming-platform client."
+      },
+      "orbit-runner": {
+        "status": "Playable prototype",
+        "blurb": "One-thumb arcade — a dot latching onto orbiting planets. Anti-cheat architecture (replay verification), modifier-fork economy design."
+      }
+    },
+    "playLabel": "Play",
+    "itchLabel": "itch.io",
+    "publishedHeading": "Published on itch.io",
+    "published": {
+      "arcanes": {
+        "blurb": "Explore the land of Hyperion and all its trials."
+      },
+      "smplanes": {
+        "blurb": "Play against everyone in this frenetic game."
+      }
+    },
+    "closingLine": "Earlier games were published on Google Play and have since been delisted."
+  },
+  "Web": {
+    "heading": "Web",
+    "intro": "Concept and demo work: sites built to show what I'd build for you.",
+    "items": {
+      "acai-joca": {
+        "name": "Açaí do Joca Jr.",
+        "label": "Concept",
+        "blurb": "One-scroll landing concept for a local açaí brand, built for B2B lead capture."
+      },
+      "gaming-platform": {
+        "name": "Competitive gaming platform (anonymized)",
+        "label": "Active engagement",
+        "blurb": "Ongoing technical advisory: engagement proposal tiers and backend architecture analysis (SpacetimeDB vs. Nakama), with Bomb Arena as a capability demo."
+      }
+    }
+  },
+  "Consulting": {
+    "heading": "Consulting",
+    "intro": "Technical guidance for founders and vibe coders building with AI — development workflow, security, architecture.",
+    "stages": {
+      "see": {
+        "label": "See",
+        "desc": "A scanner sweep across the codebase, exposing every bug already there."
+      },
+      "sense": {
+        "label": "Sense",
+        "desc": "Warning pulses at the places where failures are about to happen."
+      },
+      "fix": {
+        "label": "Fix",
+        "desc": "Worker bots swarm in and repair what's broken."
+      },
+      "strengthen": {
+        "label": "Strengthen",
+        "desc": "A lattice locks in around the healed code, so it stays that way."
+      }
+    },
+    "offersHeading": "How we can work together",
+    "offers": {
+      "audit": "One-time audit",
+      "accompaniment": "Ongoing accompaniment",
+      "partnership": "Build partnership"
+    }
+  },
+  "Factory": {
+    "heading": "The Factory",
+    "intro": "GitHub Issues → Inngest workflows → Claude Code running headless → deterministic CI gates → per-ticket release branches, two-stage regression, trusted-ref adapter pattern so untrusted PR branches can't escalate permissions.",
+    "framing": "I run my own software factory — I write the tickets, the pipeline implements.",
+    "gatesHeading": "The gates every ticket has to clear"
+  },
+  "Contact": {
+    "heading": "Contact",
+    "copy": "Tell me what you're building — I'll tell you honestly whether I can help and what the first checkpoint looks like.",
+    "emailCta": "Email me",
+    "linksHeading": "Elsewhere",
+    "links": {
+      "github": "GitHub",
+      "itch": "itch.io",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "Footer": {
+    "line": "LivingBots — Igor Felipe"
+  }
+}
