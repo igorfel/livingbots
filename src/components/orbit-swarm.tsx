@@ -3,9 +3,8 @@
 import { useEffect, useRef } from "react";
 import { stepBot, type Bot, type Pointer } from "@/lib/bot-engine/swarm";
 import { particleCap, prefersReducedMotion } from "@/lib/bot-engine/config";
+import { drawBots } from "@/lib/bot-engine/render";
 
-const WORKER_COLOR = "#3dd6ff";
-const FOREMAN_COLOR = "#ff3d6e";
 const FOREMAN_RATIO = 0.08;
 const REVOLUTION_MS = 26000;
 
@@ -111,14 +110,10 @@ export function OrbitSwarm() {
     }
 
     function draw(rect: { width: number; height: number }, elapsedMs: number) {
-      ctx!.clearRect(0, 0, rect.width, rect.height);
-      for (const bot of bots) {
-        const blink = 0.7 + 0.3 * Math.sin(elapsedMs / 500 + bot.phase);
-        ctx!.globalAlpha = blink;
-        ctx!.fillStyle = bot.kind === "foreman" ? FOREMAN_COLOR : WORKER_COLOR;
-        ctx!.fillRect(bot.x - bot.size / 2, bot.y - bot.size / 2, bot.size, bot.size);
-      }
-      ctx!.globalAlpha = 1;
+      // Translucent ink instead of clearRect: orbiting bots leave faint trails.
+      ctx!.fillStyle = "rgba(11, 14, 20, 0.25)";
+      ctx!.fillRect(0, 0, rect.width, rect.height);
+      drawBots(ctx!, bots, { now: elapsedMs, glow: 2.5 });
     }
 
     setupBots();

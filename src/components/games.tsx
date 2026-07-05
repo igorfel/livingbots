@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
-import { Section } from "@/components/section";
+import { Section, SectionHeading } from "@/components/section";
 import { AssembleReveal } from "@/components/assemble-reveal";
 import { GamesArena } from "@/components/games-arena";
+import { GamePreview } from "@/components/game-preview";
 import { games, publishedGames } from "@/lib/content";
 
 export function Games() {
@@ -9,12 +10,10 @@ export function Games() {
 
   return (
     <Section id="games">
-      <h2 className="font-display text-3xl font-semibold text-fg sm:text-4xl">
-        {t("heading")}
-      </h2>
+      <SectionHeading index="01">{t("heading")}</SectionHeading>
       <p className="mt-3 max-w-2xl text-fg-muted">{t("intro")}</p>
 
-      <GamesArena />
+      <GamesArena hint={t("arenaHint")} />
 
       <ul className="mt-10 grid gap-6 sm:grid-cols-2">
         {games.map((game) => (
@@ -23,6 +22,12 @@ export function Games() {
             id={`game-${game.id}`}
             className="scroll-mt-24 flex flex-col gap-4 rounded-2xl border border-hairline bg-panel p-6 transition-shadow"
           >
+            <GamePreview
+              gameId={game.id}
+              playHref={game.playHref}
+              name={game.name}
+              loadLabel={t("loadPreview")}
+            />
             <div className="flex items-start justify-between gap-3">
               <h3 className="font-display text-xl font-semibold text-fg">
                 {game.name}

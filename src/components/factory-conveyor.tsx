@@ -278,7 +278,7 @@ export function FactoryConveyor() {
   return (
     <div
       ref={containerRef}
-      className="relative mt-8 aspect-[21/9] w-full overflow-hidden rounded-2xl border border-hairline bg-panel"
+      className="scene-bleed relative mt-8 aspect-[21/9] w-full overflow-hidden"
     >
       <canvas ref={canvasRef} className="h-full w-full" aria-hidden="true" />
     </div>

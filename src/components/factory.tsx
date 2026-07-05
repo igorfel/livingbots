@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Section } from "@/components/section";
+import { Section, SectionHeading } from "@/components/section";
 import { FactoryConveyor } from "@/components/factory-conveyor";
 import { factoryGates } from "@/lib/content";
 
@@ -8,9 +8,7 @@ export function Factory() {
 
   return (
     <Section id="factory">
-      <h2 className="font-display text-3xl font-semibold text-fg sm:text-4xl">
-        {t("heading")}
-      </h2>
+      <SectionHeading index="04">{t("heading")}</SectionHeading>
       <p className="mt-4 max-w-3xl text-fg-muted">{t("intro")}</p>
       <p className="mt-4 max-w-3xl font-display text-lg text-worker">
         {t("framing")}

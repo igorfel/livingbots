@@ -14,10 +14,10 @@ export function Orbit() {
   return (
     <Section id="orbit" className="py-16">
       <h2 className="sr-only">{t("heading")}</h2>
-      <div className="relative mx-auto aspect-square w-full max-w-sm">
+      <div className="relative mx-auto aspect-square w-full max-w-lg">
         <OrbitSwarm />
         <div className="absolute inset-0 rounded-full border border-hairline" />
-        <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-worker bg-panel text-center font-display text-sm font-semibold text-worker">
+        <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-worker bg-panel text-center font-display text-base font-semibold text-worker">
           {t("core")}
         </div>
         {clusters.map(({ key, href, angle }) => {
@@ -29,7 +29,7 @@ export function Orbit() {
               key={key}
               href={href}
               style={{ left: `${x}%`, top: `${y}%` }}
-              className="absolute flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-hairline bg-panel text-xs font-medium text-fg transition-colors hover:border-foreman hover:text-foreman"
+              className="absolute flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-hairline bg-panel text-sm font-medium text-fg transition-colors hover:border-foreman hover:text-foreman"
             >
               {t(key)}
             </a>

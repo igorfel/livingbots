@@ -11,17 +11,26 @@ import {
 } from "@/lib/bot-engine/swarm";
 import { sampleTextPoints } from "@/lib/bot-engine/text-points";
 import { particleCap, prefersReducedMotion } from "@/lib/bot-engine/config";
+import { drawBots } from "@/lib/bot-engine/render";
 
-const WORKER_COLOR = "#3dd6ff";
-const FOREMAN_COLOR = "#ff3d6e";
 const FOREMAN_RATIO = 0.06;
-const FORMATION_WORD = "LIVING BOTS";
+// Ink at partial alpha instead of clearRect: each frame dims the last, leaving motion trails.
+const TRAIL_FADE = "rgba(11, 14, 20, 0.35)";
 
 interface HeroSwarmProps {
   onSettle?: () => void;
+  /** Word the swarm assembles. The contact section reuses this scene with its own word. */
+  word?: string;
+  capDesktop?: number;
+  capMobile?: number;
 }
 
-export function HeroSwarm({ onSettle }: HeroSwarmProps) {
+export function HeroSwarm({
+  onSettle,
+  word = "LIVING BOTS",
+  capDesktop = 400,
+  capMobile = 250,
+}: HeroSwarmProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const onSettleRef = useRef(onSettle);
@@ -57,12 +66,14 @@ export function HeroSwarm({ onSettle }: HeroSwarmProps) {
 
     function setupBots() {
       const rect = layout();
-      const count = particleCap(400, 250);
-      const fontPx = Math.min(rect.width / 8, 90);
+      const count = particleCap(capDesktop, capMobile);
+      const fontPx = Math.min((rect.width / word.length) * 1.55, 150);
+      // Sample against 80% of the height so the word centers at 40% — clear of the
+      // tagline block that overlays the bottom of the full-bleed scene.
       const points = sampleTextPoints(
-        FORMATION_WORD,
+        word,
         rect.width,
-        rect.height,
+        rect.height * 0.8,
         fontPx,
         "system-ui, sans-serif",
         count,
@@ -96,10 +107,14 @@ export function HeroSwarm({ onSettle }: HeroSwarmProps) {
     function drawStatic() {
       const rect = layout();
       ctx!.clearRect(0, 0, rect.width, rect.height);
-      for (const bot of bots) {
-        ctx!.fillStyle = bot.kind === "foreman" ? FOREMAN_COLOR : WORKER_COLOR;
-        ctx!.fillRect(bot.homeX - bot.size / 2, bot.homeY - bot.size / 2, bot.size, bot.size);
-      }
+      const settledBots = bots.map((bot) => ({
+        ...bot,
+        x: bot.homeX,
+        y: bot.homeY,
+        vx: 0,
+        vy: 0,
+      }));
+      drawBots(ctx!, settledBots, { now: 0, blink: false, stretch: 0 });
     }
 
     function tick(now: number) {
@@ -113,17 +128,11 @@ export function HeroSwarm({ onSettle }: HeroSwarmProps) {
       lastTime = now;
 
       const rect = container!.getBoundingClientRect();
-      ctx!.clearRect(0, 0, rect.width, rect.height);
+      ctx!.fillStyle = TRAIL_FADE;
+      ctx!.fillRect(0, 0, rect.width, rect.height);
 
       bots = bots.map((bot) => stepBot(bot, mode, pointer, dt, Math.random));
-
-      for (const bot of bots) {
-        const blink = 0.75 + 0.25 * Math.sin(now / 400 + bot.phase);
-        ctx!.globalAlpha = blink;
-        ctx!.fillStyle = bot.kind === "foreman" ? FOREMAN_COLOR : WORKER_COLOR;
-        ctx!.fillRect(bot.x - bot.size / 2, bot.y - bot.size / 2, bot.size, bot.size);
-      }
-      ctx!.globalAlpha = 1;
+      drawBots(ctx!, bots, { now });
 
       if (!settled) {
         settleTimer += dt;
@@ -207,11 +216,11 @@ export function HeroSwarm({ onSettle }: HeroSwarmProps) {
       container.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [word, capDesktop, capMobile]);
 
   return (
     <div ref={containerRef} className="absolute inset-0" aria-hidden="true">
-      <canvas ref={canvasRef} className="h-full w-full touch-none" />
+      <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   );
 }

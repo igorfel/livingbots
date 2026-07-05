@@ -34,14 +34,37 @@ body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Canvas scenes bleed into the page instead of sitting in framed panels —
+   the swarm inhabits the site, it doesn't live in picture frames. */
+.scene-bleed {
+  mask-image: radial-gradient(130% 105% at 50% 50%, black 55%, transparent 98%);
+}
+
 .arena-hit {
   box-shadow: 0 0 0 2px var(--color-worker);
   transition: box-shadow 0.3s ease-out;
 }
 
+/* Consulting stages: a process strip, not cards. The Sixth Sense canvas toggles
+   .stage-active in sync with its animation; the active gate lights up cyan. */
+.consulting-stage {
+  transition: border-color 0.3s ease-out;
+}
+
+.stage-num {
+  color: var(--color-fg-muted);
+  transition:
+    color 0.3s ease-out,
+    text-shadow 0.3s ease-out;
+}
+
 .stage-active {
   border-color: var(--color-worker);
-  transition: border-color 0.3s ease-out;
+}
+
+.stage-active .stage-num {
+  color: var(--color-worker);
+  text-shadow: 0 0 12px rgba(61, 214, 255, 0.5);
 }
 
 @keyframes nav-companion-blink {

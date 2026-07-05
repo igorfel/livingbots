@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import { stepBot, type Bot, type Pointer } from "@/lib/bot-engine/swarm";
 import { samplePerimeterPoints } from "@/lib/bot-engine/shapes";
 import { onEnterOnce, prefersReducedMotion } from "@/lib/bot-engine/config";
+import { drawBots } from "@/lib/bot-engine/render";
 
-const WORKER_COLOR = "#3dd6ff";
 const PANEL_COLOR = "#12161f";
 const HAIRLINE_COLOR = "#232838";
 const ASSEMBLE_SECONDS = 0.9;
@@ -174,10 +174,7 @@ export function AcaiMockup() {
           drawBlockFill(ctx!, pixelRect(rect, state.def), state.def, state.fillAlpha);
         }
         if (state.botAlpha > 0) {
-          ctx!.globalAlpha = state.botAlpha;
-          ctx!.fillStyle = WORKER_COLOR;
-          for (const b of state.bots) ctx!.fillRect(b.x - 1.5, b.y - 1.5, 3, 3);
-          ctx!.globalAlpha = 1;
+          drawBots(ctx!, state.bots, { now, alphaScale: state.botAlpha, glow: 2 });
         }
       }
 

@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
-import { Section } from "@/components/section";
+import { Section, SectionHeading } from "@/components/section";
 import { EmailCta } from "@/components/email-cta";
+import { HeroSwarm } from "@/components/hero-swarm";
 import { contactEmail, contactLinks } from "@/lib/content";
 
 export function Contact() {
@@ -8,10 +9,12 @@ export function Contact() {
 
   return (
     <Section id="contact" className="border-b-0">
-      <h2 className="font-display text-3xl font-semibold text-fg sm:text-4xl">
-        {t("heading")}
-      </h2>
+      <SectionHeading index="05">{t("heading")}</SectionHeading>
       <p className="mt-4 max-w-2xl text-fg-muted">{t("copy")}</p>
+
+      <div className="relative mt-10 aspect-21/6 min-h-36 w-full" aria-hidden="true">
+        <HeroSwarm word={t("swarmWord")} capDesktop={220} capMobile={140} />
+      </div>
 
       <EmailCta label={t("emailCta")} email={contactEmail} />
 

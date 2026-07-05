@@ -47,6 +47,8 @@
       }
     },
     "playLabel": "Jogar",
+    "loadPreview": "Abrir prévia ao vivo",
+    "arenaHint": "voe até um jogo · ou só toque nele",
     "itchLabel": "itch.io",
     "publishedHeading": "Publicados no itch.io",
     "published": {
@@ -105,13 +107,14 @@
   },
   "Factory": {
     "heading": "A Fábrica",
-    "intro": "Issues do GitHub → workflows do Inngest → Claude Code rodando headless → gates determinísticos de CI → branches de release por ticket, regressão em dois estágios, padrão de adapter com trusted-ref para que branches de PR não confiáveis não consigam escalar permissões.",
+    "intro": "Issues reais do GitHub entram de um lado; código revisado e testado sai do outro. O Inngest orquestra os workflows, o Claude Code implementa sem supervisão, e três gates determinísticos (tsc, ESLint, Vitest) decidem o que entra na main. O que reprova volta para o agente com feedback e é carregado de novo. Branches não confiáveis rodam atrás de um adapter de trusted-ref, então nada escala permissões.",
     "framing": "Rodo minha própria fábrica de software — eu escrevo os tickets, o pipeline implementa.",
     "gatesHeading": "Os gates que todo ticket precisa atravessar"
   },
   "Contact": {
     "heading": "Contato",
     "copy": "Me conte o que você está construindo — eu te digo com sinceridade se posso ajudar e como seria o primeiro checkpoint.",
+    "swarmWord": "VAMOS CONSTRUIR",
     "emailCta": "Me mande um email",
     "linksHeading": "Outros canais",
     "links": {

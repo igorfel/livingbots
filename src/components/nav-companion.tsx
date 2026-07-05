@@ -56,6 +56,7 @@ export function NavCompanion() {
       style={{
         transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -170%)`,
         animation: "nav-companion-blink 2.4s ease-in-out infinite",
+        boxShadow: "0 0 10px 2px rgba(61, 214, 255, 0.65)",
       }}
     />
   );

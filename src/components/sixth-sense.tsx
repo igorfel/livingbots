@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { stepBot, type Bot, type Pointer } from "@/lib/bot-engine/swarm";
 import { samplePerimeterPoints } from "@/lib/bot-engine/shapes";
 import { prefersReducedMotion } from "@/lib/bot-engine/config";
+import { drawBots } from "@/lib/bot-engine/render";
 
 const BUG_COLOR = "#ff4d4d";
 const WORKER_COLOR = "#3dd6ff";
@@ -240,10 +241,7 @@ export function SixthSense() {
         }
 
         if (bug.bots && bug.fixed < 1) {
-          ctx!.globalAlpha = 1 - bug.fixed;
-          ctx!.fillStyle = WORKER_COLOR;
-          for (const b of bug.bots) ctx!.fillRect(b.x - 1.5, b.y - 1.5, 3, 3);
-          ctx!.globalAlpha = 1;
+          drawBots(ctx!, bug.bots, { now, alphaScale: 1 - bug.fixed, glow: 2 });
         }
       }
 
@@ -289,7 +287,7 @@ export function SixthSense() {
   return (
     <div
       ref={containerRef}
-      className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-hairline bg-ink"
+      className="scene-bleed relative mt-8 aspect-video w-full overflow-hidden"
     >
       <canvas ref={canvasRef} className="h-full w-full" aria-hidden="true" />
     </div>

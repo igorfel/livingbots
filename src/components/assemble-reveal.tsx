@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { stepBot, type Bot, type Pointer } from "@/lib/bot-engine/swarm";
 import { samplePerimeterPoints } from "@/lib/bot-engine/shapes";
 import { onEnterOnce, prefersReducedMotion } from "@/lib/bot-engine/config";
+import { drawBots } from "@/lib/bot-engine/render";
 
-const WORKER_COLOR = "#3dd6ff";
 const BOT_COUNT = 56;
 const SETTLE_SECONDS = 1.1;
 const FADE_SECONDS = 0.5;
@@ -64,12 +64,7 @@ function playAssembly(
       fadeAlpha = Math.max(0, fadeAlpha - dt / FADE_SECONDS);
     }
 
-    ctx.globalAlpha = fadeAlpha;
-    ctx.fillStyle = WORKER_COLOR;
-    for (const b of bots) {
-      ctx.fillRect(b.x - 1.5, b.y - 1.5, 3, 3);
-    }
-    ctx.globalAlpha = 1;
+    drawBots(ctx, bots, { now, alphaScale: fadeAlpha, glow: 2 });
 
     if (fadeAlpha > 0) requestAnimationFrame(tick);
   }

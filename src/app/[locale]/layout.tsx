@@ -38,6 +38,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
+    metadataBase: new URL("https://livingbots.vercel.app"),
     title: t("title"),
     description: t("description"),
     alternates: {
@@ -45,6 +46,16 @@ export async function generateMetadata({
         en: "/en",
         pt: "/pt",
       },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      siteName: "LivingBots",
+      type: "website",
+      locale: locale === "pt" ? "pt_BR" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
     },
   };
 }

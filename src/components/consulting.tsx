@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Section } from "@/components/section";
+import { Section, SectionHeading } from "@/components/section";
 import { SixthSense } from "@/components/sixth-sense";
 
 const stages = ["see", "sense", "fix", "strengthen"] as const;
@@ -10,24 +10,22 @@ export function Consulting() {
 
   return (
     <Section id="consulting">
-      <h2 className="font-display text-3xl font-semibold text-fg sm:text-4xl">
-        {t("heading")}
-      </h2>
+      <SectionHeading index="03">{t("heading")}</SectionHeading>
       <p className="mt-3 max-w-2xl text-fg-muted">{t("intro")}</p>
 
       <SixthSense />
 
-      <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
         {stages.map((stage, index) => (
           <li
             key={stage}
             id={`stage-${stage}`}
-            className="rounded-2xl border border-hairline bg-panel p-6 transition-colors"
+            className="consulting-stage border-t border-hairline pt-5"
           >
-            <span className="font-mono text-xs text-foreman">
+            <span className="stage-num font-mono text-3xl">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-2 font-display text-lg font-semibold text-fg">
+            <h3 className="mt-3 font-display text-lg font-semibold text-fg">
               {t(`stages.${stage}.label`)}
             </h3>
             <p className="mt-2 text-sm text-fg-muted">
