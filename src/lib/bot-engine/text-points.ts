@@ -7,6 +7,13 @@ export interface Point {
  * Renders `text` to an offscreen canvas and samples opaque pixel positions,
  * spaced `step` px apart, as home points for a bot swarm to assemble into.
  * Browser-only (needs a 2D canvas context) — call from a mounted effect.
+ *
+ * `maxCount` is a safety ceiling, not a target: the glyph naturally has a fixed
+ * number of candidate pixels for a given font size, and returning fewer than
+ * that (a flat count picked without knowing the glyph's area) leaves visible
+ * gaps between bots — worse on wide screens where the font is capped but the
+ * candidate grid stays just as dense. Using every candidate up to the ceiling
+ * keeps the letters solid regardless of viewport width.
  */
 export function sampleTextPoints(
   text: string,
@@ -14,7 +21,7 @@ export function sampleTextPoints(
   height: number,
   fontPx: number,
   fontFamily: string,
-  count: number,
+  maxCount: number,
   step = 4,
 ): Point[] {
   const canvas = document.createElement("canvas");
@@ -47,9 +54,5 @@ export function sampleTextPoints(
     [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
   }
 
-  const points: Point[] = [];
-  for (let i = 0; i < count; i++) {
-    points.push(candidates[i % candidates.length]);
-  }
-  return points;
+  return candidates.slice(0, maxCount);
 }

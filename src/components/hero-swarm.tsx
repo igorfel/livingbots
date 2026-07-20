@@ -10,27 +10,29 @@ import {
   type SwarmMode,
 } from "@/lib/bot-engine/swarm";
 import { sampleTextPoints } from "@/lib/bot-engine/text-points";
-import { particleCap, prefersReducedMotion } from "@/lib/bot-engine/config";
+import { prefersReducedMotion } from "@/lib/bot-engine/config";
 import { drawBots } from "@/lib/bot-engine/render";
 
 const FOREMAN_RATIO = 0.06;
 // Ink at partial alpha instead of clearRect: each frame dims the last, leaving motion trails.
 const TRAIL_FADE = "rgba(11, 14, 20, 0.35)";
+// Safety ceiling only — the glyph's own opaque-pixel grid decides the real
+// count (see sampleTextPoints), so mobile's smaller font naturally uses fewer
+// bots without a separate breakpoint tier.
+const MAX_BOTS = 1500;
+// Lower than the render default: at near-full glyph-grid density the bots
+// sit close enough to melt into each other, so less per-bot bloom keeps
+// individual bots crisp instead of blowing out into one solid blob.
+const TEXT_GLOW = 1.5;
 
 interface HeroSwarmProps {
   onSettle?: () => void;
   /** Word the swarm assembles. The contact section reuses this scene with its own word. */
   word?: string;
-  capDesktop?: number;
-  capMobile?: number;
+  maxBots?: number;
 }
 
-export function HeroSwarm({
-  onSettle,
-  word = "LIVING BOTS",
-  capDesktop = 400,
-  capMobile = 250,
-}: HeroSwarmProps) {
+export function HeroSwarm({ onSettle, word = "LIVING BOTS", maxBots = MAX_BOTS }: HeroSwarmProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const onSettleRef = useRef(onSettle);
@@ -66,7 +68,6 @@ export function HeroSwarm({
 
     function setupBots() {
       const rect = layout();
-      const count = particleCap(capDesktop, capMobile);
       const fontPx = Math.min((rect.width / word.length) * 1.55, 150);
       // Sample against 80% of the height so the word centers at 40% — clear of the
       // tagline block that overlays the bottom of the full-bleed scene.
@@ -76,7 +77,7 @@ export function HeroSwarm({
         rect.height * 0.8,
         fontPx,
         "system-ui, sans-serif",
-        count,
+        maxBots,
       );
 
       bots = points.map((point, i) => {
@@ -114,7 +115,7 @@ export function HeroSwarm({
         vx: 0,
         vy: 0,
       }));
-      drawBots(ctx!, settledBots, { now: 0, blink: false, stretch: 0 });
+      drawBots(ctx!, settledBots, { now: 0, blink: false, stretch: 0, glow: TEXT_GLOW });
     }
 
     function tick(now: number) {
@@ -132,7 +133,7 @@ export function HeroSwarm({
       ctx!.fillRect(0, 0, rect.width, rect.height);
 
       bots = bots.map((bot) => stepBot(bot, mode, pointer, dt, Math.random));
-      drawBots(ctx!, bots, { now });
+      drawBots(ctx!, bots, { now, glow: TEXT_GLOW });
 
       if (!settled) {
         settleTimer += dt;
@@ -216,7 +217,7 @@ export function HeroSwarm({
       container.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("resize", onResize);
     };
-  }, [word, capDesktop, capMobile]);
+  }, [word, maxBots]);
 
   return (
     <div ref={containerRef} className="absolute inset-0" aria-hidden="true">

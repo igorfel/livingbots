@@ -13,7 +13,7 @@ export function Contact() {
       <p className="mt-4 max-w-2xl text-fg-muted">{t("copy")}</p>
 
       <div className="relative mt-10 aspect-21/6 min-h-36 w-full" aria-hidden="true">
-        <HeroSwarm word={t("swarmWord")} capDesktop={220} capMobile={140} />
+        <HeroSwarm word={t("swarmWord")} />
       </div>
 
       <EmailCta label={t("emailCta")} email={contactEmail} />
