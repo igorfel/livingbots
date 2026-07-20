@@ -49,6 +49,9 @@
     "playLabel": "Play",
     "loadPreview": "Load live preview",
     "arenaHint": "fly into a game · or just tap it",
+    "targetLocked": "Target locked",
+    "viewCard": "View details",
+    "dismiss": "Dismiss",
     "itchLabel": "itch.io",
     "publishedHeading": "Published on itch.io",
     "published": {

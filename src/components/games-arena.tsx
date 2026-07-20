@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { prefersReducedMotion } from "@/lib/bot-engine/config";
 import { drawGameGlyph, type GameId } from "@/lib/game-glyphs";
 import { games } from "@/lib/content";
@@ -37,6 +38,15 @@ const TARGETS: TargetDef[] = [
 const HIT_RADIUS = 26;
 const TAP_RADIUS = 30;
 const HIT_COOLDOWN_MS = 1200;
+const PANEL_WIDTH = 260;
+
+interface HitInfo {
+  id: TargetId;
+  x: number;
+  y: number;
+  rectW: number;
+  rectH: number;
+}
 
 function targetPos(size: { width: number; height: number }, def: TargetDef, t: number) {
   return {
@@ -45,14 +55,60 @@ function targetPos(size: { width: number; height: number }, def: TargetDef, t: n
   };
 }
 
-function drawShip(ctx: CanvasRenderingContext2D, x: number, y: number) {
-  ctx.fillStyle = WORKER_COLOR;
+const FOREMAN_COLOR = "#ff3d6e";
+
+/**
+ * Player ship. Drawn nose-up in local space, then rotated by `angle` (the
+ * heading, already offset so 0 = pointing up). `speed` drives the thruster
+ * flame length; `now` flickers it.
+ */
+function drawShip(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  angle: number,
+  speed: number,
+  now: number,
+) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  // Thruster flame out the tail, length scaling with speed, flickering.
+  const flicker = 0.7 + 0.3 * Math.sin(now / 55);
+  const flameLen = (5 + Math.min(speed, 16) * 1.15) * flicker;
+  const flame = ctx.createLinearGradient(0, 6, 0, 6 + flameLen);
+  flame.addColorStop(0, "rgba(255, 61, 110, 0.95)");
+  flame.addColorStop(0.5, "rgba(255, 61, 110, 0.5)");
+  flame.addColorStop(1, "rgba(255, 61, 110, 0)");
+  ctx.fillStyle = flame;
   ctx.beginPath();
-  ctx.moveTo(x, y - 8);
-  ctx.lineTo(x - 6, y + 6);
-  ctx.lineTo(x + 6, y + 6);
+  ctx.moveTo(-3.2, 6);
+  ctx.lineTo(3.2, 6);
+  ctx.lineTo(0, 6 + flameLen);
   ctx.closePath();
   ctx.fill();
+
+  // Hull with a cyan bloom.
+  ctx.shadowColor = WORKER_COLOR;
+  ctx.shadowBlur = 12;
+  ctx.fillStyle = WORKER_COLOR;
+  ctx.beginPath();
+  ctx.moveTo(0, -10); // nose
+  ctx.lineTo(7.5, 6); // right wing
+  ctx.lineTo(0, 2.5); // tail notch
+  ctx.lineTo(-7.5, 6); // left wing
+  ctx.closePath();
+  ctx.fill();
+  ctx.shadowBlur = 0;
+
+  // Cockpit accent — foreman magenta, so the ship reads as "piloted".
+  ctx.fillStyle = FOREMAN_COLOR;
+  ctx.beginPath();
+  ctx.arc(0, -3, 1.7, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
 }
 
 function triggerHit(id: TargetId) {
@@ -64,8 +120,15 @@ function triggerHit(id: TargetId) {
 }
 
 export function GamesArena({ hint }: { hint: string }) {
+  const t = useTranslations("Games");
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Mirrors `activeHit` for the imperative render loop, which can't read React
+  // state directly: a hit opens a HUD summary instead of navigating straight
+  // to the card, and a second hit shouldn't retarget while one is already up.
+  const activeHitRef = useRef<TargetId | null>(null);
+  const popupPanelRef = useRef<HTMLDivElement>(null);
+  const [activeHit, setActiveHit] = useState<HitInfo | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -78,7 +141,10 @@ export function GamesArena({ hint }: { hint: string }) {
     let resizeTimer = 0;
     let width = 0;
     let height = 0;
-    const ship = { x: 0, y: 0, initialized: false };
+    // angle is the drawn heading (0 = nose up); it eases toward the velocity
+    // direction so turns bank smoothly instead of snapping.
+    const ship = { x: 0, y: 0, vx: 0, vy: 0, angle: 0, initialized: false };
+    const trail: { x: number; y: number }[] = [];
     const pointer = { x: -9999, y: -9999, active: false };
     const cooldowns = new Map<TargetId, number>();
     const bursts: { x: number; y: number; start: number }[] = [];
@@ -107,6 +173,7 @@ export function GamesArena({ hint }: { hint: string }) {
     }
 
     function tryHit(x: number, y: number, radius: number, now: number) {
+      if (activeHitRef.current) return;
       for (const def of TARGETS) {
         const pos = targetPos({ width, height }, def, now / 1000);
         const cooldownUntil = cooldowns.get(def.id) ?? 0;
@@ -114,7 +181,9 @@ export function GamesArena({ hint }: { hint: string }) {
         if (Math.hypot(x - pos.x, y - pos.y) < radius) {
           cooldowns.set(def.id, now + HIT_COOLDOWN_MS);
           bursts.push({ x: pos.x, y: pos.y, start: now });
-          triggerHit(def.id);
+          activeHitRef.current = def.id;
+          setActiveHit({ id: def.id, x: pos.x, y: pos.y, rectW: width, rectH: height });
+          return;
         }
       }
     }
@@ -129,13 +198,29 @@ export function GamesArena({ hint }: { hint: string }) {
       pointer.active = false;
     }
     function onPointerDown(e: PointerEvent) {
+      if (activeHitRef.current) {
+        // A pointerdown on the popup itself (View details / dismiss) must reach
+        // that element's own click handler — treating it as an outside click
+        // here would close the popup before the click ever fires on it.
+        if (popupPanelRef.current?.contains(e.target as Node)) return;
+        activeHitRef.current = null;
+        setActiveHit(null);
+        return;
+      }
       const p = toLocal(e.clientX, e.clientY);
       tryHit(p.x, p.y, TAP_RADIUS, performance.now());
+    }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape" && activeHitRef.current) {
+        activeHitRef.current = null;
+        setActiveHit(null);
+      }
     }
 
     container.addEventListener("pointermove", onPointerMove);
     container.addEventListener("pointerleave", onPointerLeave);
     container.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown);
 
     function tick(now: number) {
       rafId = requestAnimationFrame(tick);
@@ -145,8 +230,32 @@ export function GamesArena({ hint }: { hint: string }) {
       ctx!.clearRect(0, 0, width, height);
 
       if (pointer.active) {
-        ship.x += (pointer.x - ship.x) * 0.18;
-        ship.y += (pointer.y - ship.y) * 0.18;
+        const nx = ship.x + (pointer.x - ship.x) * 0.18;
+        const ny = ship.y + (pointer.y - ship.y) * 0.18;
+        ship.vx = nx - ship.x;
+        ship.vy = ny - ship.y;
+        ship.x = nx;
+        ship.y = ny;
+      } else {
+        ship.vx *= 0.9;
+        ship.vy *= 0.9;
+      }
+
+      const speed = Math.hypot(ship.vx, ship.vy);
+      if (speed > 0.4) {
+        // Heading points along velocity; +PI/2 because the hull is drawn nose-up
+        // (−Y) while atan2 measures from +X. Ease via shortest angular path.
+        const target = Math.atan2(ship.vy, ship.vx) + Math.PI / 2;
+        const diff = Math.atan2(
+          Math.sin(target - ship.angle),
+          Math.cos(target - ship.angle),
+        );
+        ship.angle += diff * 0.2;
+
+        trail.push({ x: ship.x, y: ship.y });
+        if (trail.length > 14) trail.shift();
+      } else if (trail.length) {
+        trail.shift();
       }
 
       for (const def of TARGETS) {
@@ -174,7 +283,15 @@ export function GamesArena({ hint }: { hint: string }) {
         ctx!.stroke();
       }
 
-      drawShip(ctx!, ship.x, ship.y);
+      for (let i = 0; i < trail.length; i++) {
+        const f = i / trail.length;
+        ctx!.fillStyle = `rgba(61, 214, 255, ${f * 0.3})`;
+        ctx!.beginPath();
+        ctx!.arc(trail[i].x, trail[i].y, 1 + f * 2, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+
+      drawShip(ctx!, ship.x, ship.y, ship.angle, speed, now);
     }
     rafId = requestAnimationFrame(tick);
 
@@ -197,8 +314,22 @@ export function GamesArena({ hint }: { hint: string }) {
       container.removeEventListener("pointerleave", onPointerLeave);
       container.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, []);
+
+  function handleNavigate() {
+    if (!activeHit) return;
+    triggerHit(activeHit.id);
+    activeHitRef.current = null;
+    setActiveHit(null);
+  }
+
+  function handleDismiss(e: React.MouseEvent) {
+    e.stopPropagation();
+    activeHitRef.current = null;
+    setActiveHit(null);
+  }
 
   return (
     <div
@@ -209,6 +340,69 @@ export function GamesArena({ hint }: { hint: string }) {
       <p className="pointer-events-none absolute bottom-3 right-4 font-mono text-xs text-fg-muted">
         {hint}
       </p>
+      {activeHit && (
+        <div
+          className="absolute z-20"
+          style={{
+            left: Math.min(
+              Math.max(activeHit.x, PANEL_WIDTH / 2 + 8),
+              activeHit.rectW - PANEL_WIDTH / 2 - 8,
+            ),
+            top: activeHit.y,
+            width: PANEL_WIDTH,
+            transform:
+              activeHit.y < activeHit.rectH / 2
+                ? "translate(-50%, 24px)"
+                : "translate(-50%, calc(-100% - 24px))",
+          }}
+        >
+          <div
+            ref={popupPanelRef}
+            className="arena-popup-in relative rounded-lg border border-worker/50 bg-ink/95 p-4 shadow-[0_0_28px_rgba(61,214,255,0.25)]"
+          >
+            <span aria-hidden="true" className="absolute left-1.5 top-1.5 h-2.5 w-2.5 border-l border-t border-worker" />
+            <span aria-hidden="true" className="absolute right-1.5 top-1.5 h-2.5 w-2.5 border-r border-t border-worker" />
+            <span aria-hidden="true" className="absolute bottom-1.5 left-1.5 h-2.5 w-2.5 border-b border-l border-worker" />
+            <span aria-hidden="true" className="absolute bottom-1.5 right-1.5 h-2.5 w-2.5 border-b border-r border-worker" />
+
+            <button
+              type="button"
+              onClick={handleDismiss}
+              aria-label={t("dismiss")}
+              className="absolute right-2 top-2 font-mono text-xs text-fg-muted hover:text-fg"
+            >
+              ×
+            </button>
+
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={handleNavigate}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleNavigate();
+                }
+              }}
+              className="cursor-pointer pr-4"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-wide text-worker">
+                {t("targetLocked")}
+              </p>
+              <p className="mt-1 font-display text-base font-semibold text-fg">
+                {TARGET_NAMES[activeHit.id]}
+              </p>
+              <span className="mt-1 inline-block rounded-full border border-worker/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-worker">
+                {t(`items.${activeHit.id}.status`)}
+              </span>
+              <p className="mt-2 text-xs text-fg-muted">
+                {t(`items.${activeHit.id}.blurb`)}
+              </p>
+              <p className="mt-2 font-mono text-xs text-worker">{t("viewCard")} →</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

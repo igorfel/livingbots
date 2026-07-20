@@ -49,6 +49,9 @@
     "playLabel": "Jogar",
     "loadPreview": "Abrir prévia ao vivo",
     "arenaHint": "voe até um jogo · ou só toque nele",
+    "targetLocked": "Alvo travado",
+    "viewCard": "Ver detalhes",
+    "dismiss": "Fechar",
     "itchLabel": "itch.io",
     "publishedHeading": "Publicados no itch.io",
     "published": {
