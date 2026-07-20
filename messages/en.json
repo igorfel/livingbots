@@ -14,7 +14,7 @@
   "Hero": {
     "eyebrow": "LivingBots",
     "tagline": "I build software that feels alive.",
-    "sub": "Games, websites, and healthier codebases — by Igor Felipe, One developer with 16 years of code, breaking ambitious ideas into achievable milestones.",
+    "sub": "Games, websites, and digital experiences crafted to be fast, intuitive, and built to evolve — by Igor Felipe, One developer with 16 years of code, breaking ambitious ideas into achievable milestones.",
     "ctaGames": "Play the games",
     "ctaConsulting": "Work with me"
   },
@@ -107,8 +107,8 @@
   },
   "Factory": {
     "heading": "The Factory",
-    "intro": "Real GitHub issues go in one end; reviewed, tested code comes out the other. Inngest orchestrates the workflows, Claude Code implements them headless, and three deterministic gates (tsc, ESLint, Vitest) decide what reaches main. Failing work bounces back to the agent with feedback and gets carried through again. Untrusted branches run behind a trusted-ref adapter, so nothing escalates permissions.",
-    "framing": "I run my own software factory — I write the tickets, the pipeline implements.",
+    "intro": "I'm building my own software factory: real GitHub issues go in one end, reviewed and tested code comes out the other. Inngest orchestrates the workflows, Claude Code implements them headless, and three deterministic gates (tsc, ESLint, Vitest) decide what reaches main. Failing work bounces back to the agent with feedback and gets carried through again. Untrusted branches run behind a trusted-ref adapter, so nothing escalates permissions.",
+    "framing": "I write the tickets, the pipeline implements it.",
     "gatesHeading": "The gates every ticket has to clear"
   },
   "Contact": {
