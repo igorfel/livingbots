@@ -55,7 +55,7 @@ Bots fly in from the edges and assemble the words **LIVING BOTS**. Pointer/touch
 Copy (EN):
 - H1 (visually: the swarm forms it; also present as real HTML for SEO): **LivingBots**
 - Tagline: **"I build software that feels alive."**
-- Sub: "Games, websites, and healthier codebases — by Igor Felipe, one developer with 16 years of code and a habit of shipping in small checkpoints."
+- Sub: "Games, websites, and healthier codebases — by Igor Felipe, One developer with 16 years of code, breaking ambitious ideas into achievable milestones."
 - CTAs: "Play the games" → Games · "Work with me" → Consulting
 
 pt-BR tagline: **"Eu crio software que parece vivo."** (translate the rest naturally)
