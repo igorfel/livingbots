@@ -129,6 +129,17 @@ export function GamesArena({ hint }: { hint: string }) {
   const activeHitRef = useRef<TargetId | null>(null);
   const popupPanelRef = useRef<HTMLDivElement>(null);
   const [activeHit, setActiveHit] = useState<HitInfo | null>(null);
+  // Wide screens float the popup at the hit point; narrow screens dock it to
+  // the arena's bottom edge, where it's guaranteed fully visible.
+  const [isWide, setIsWide] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setIsWide(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -194,8 +205,11 @@ export function GamesArena({ hint }: { hint: string }) {
       pointer.y = p.y;
       pointer.active = true;
     }
-    function onPointerLeave() {
-      pointer.active = false;
+    function onPointerLeave(e: PointerEvent) {
+      // Only a departing mouse cursor stops the follow. A touch has no hover, so
+      // deactivating on its post-tap leave would freeze the ship before it
+      // reaches the tapped point.
+      if (e.pointerType === "mouse") pointer.active = false;
     }
     function onPointerDown(e: PointerEvent) {
       if (activeHitRef.current) {
@@ -208,6 +222,11 @@ export function GamesArena({ hint }: { hint: string }) {
         return;
       }
       const p = toLocal(e.clientX, e.clientY);
+      // Tapping steers the ship to that point — the only way to move it on touch,
+      // and harmless on desktop where hover already tracks the cursor.
+      pointer.x = p.x;
+      pointer.y = p.y;
+      pointer.active = true;
       tryHit(p.x, p.y, TAP_RADIUS, performance.now());
     }
     function onKeyDown(e: KeyboardEvent) {
@@ -334,7 +353,7 @@ export function GamesArena({ hint }: { hint: string }) {
   return (
     <div
       ref={containerRef}
-      className="relative mt-8 aspect-[21/9] w-full touch-none overflow-hidden rounded-2xl border border-hairline bg-panel motion-reduce:hidden"
+      className="relative mt-8 aspect-square w-full touch-none overflow-hidden rounded-2xl border border-hairline bg-panel motion-reduce:hidden sm:aspect-[21/9]"
     >
       <canvas ref={canvasRef} className="h-full w-full" aria-hidden="true" />
       <p className="pointer-events-none absolute bottom-3 right-4 font-mono text-xs text-fg-muted">
@@ -343,18 +362,22 @@ export function GamesArena({ hint }: { hint: string }) {
       {activeHit && (
         <div
           className="absolute z-20"
-          style={{
-            left: Math.min(
-              Math.max(activeHit.x, PANEL_WIDTH / 2 + 8),
-              activeHit.rectW - PANEL_WIDTH / 2 - 8,
-            ),
-            top: activeHit.y,
-            width: PANEL_WIDTH,
-            transform:
-              activeHit.y < activeHit.rectH / 2
-                ? "translate(-50%, 24px)"
-                : "translate(-50%, calc(-100% - 24px))",
-          }}
+          style={
+            isWide
+              ? {
+                  left: Math.min(
+                    Math.max(activeHit.x, PANEL_WIDTH / 2 + 8),
+                    activeHit.rectW - PANEL_WIDTH / 2 - 8,
+                  ),
+                  top: activeHit.y,
+                  width: PANEL_WIDTH,
+                  transform:
+                    activeHit.y < activeHit.rectH / 2
+                      ? "translate(-50%, 24px)"
+                      : "translate(-50%, calc(-100% - 24px))",
+                }
+              : { left: 12, right: 12, bottom: 12 }
+          }
         >
           <div
             ref={popupPanelRef}
