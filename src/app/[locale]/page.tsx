@@ -1,11 +1,10 @@
 import { setRequestLocale } from "next-intl/server";
-import { Hero } from "@/components/hero";
-import { Orbit } from "@/components/orbit";
+import { ArcanesHero } from "@/components/arcanes-hero";
+import { Arcanes } from "@/components/arcanes";
+import { ArcanesWorld } from "@/components/arcanes-world";
 import { Games } from "@/components/games";
-import { Web } from "@/components/web";
-import { Consulting } from "@/components/consulting";
-import { Factory } from "@/components/factory";
-import { Contact } from "@/components/contact";
+import { ItchBand } from "@/components/itch-band";
+import { StudioTeaser } from "@/components/studio-teaser";
 
 export default async function HomePage({
   params,
@@ -17,13 +16,12 @@ export default async function HomePage({
 
   return (
     <>
-      <Hero />
-      <Orbit />
+      <ArcanesHero />
+      <Arcanes />
+      <ArcanesWorld />
       <Games />
-      <Web />
-      <Consulting />
-      <Factory />
-      <Contact />
+      <ItchBand />
+      <StudioTeaser />
     </>
   );
 }

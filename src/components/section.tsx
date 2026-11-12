@@ -2,15 +2,19 @@ export function Section({
   id,
   children,
   className,
+  navSection,
 }: {
   id: string;
   children: React.ReactNode;
   className?: string;
+  /** Which nav item the companion bot perches on while this section is in view. */
+  navSection?: string;
 }) {
   return (
     <section
       id={id}
-      className={`scroll-mt-20 border-b border-hairline px-6 py-20 ${className ?? ""}`}
+      data-nav-section={navSection}
+      className={`scroll-mt-20 px-6 py-20 sm:py-28 ${className ?? ""}`}
     >
       <div className="mx-auto max-w-6xl">{children}</div>
     </section>
@@ -18,24 +22,42 @@ export function Section({
 }
 
 /**
- * Numbered display heading — the site's sections read as stations on the
- * factory line, so each carries a mono ticket index next to display type.
+ * Eyebrow label + display heading. `tone` picks the accent: gold for Arcanes,
+ * cyan for the studio's own work.
  */
 export function SectionHeading({
-  index,
+  label,
   children,
+  tone = "studio",
+  as: Tag = "h2",
 }: {
-  index: string;
+  label: string;
   children: React.ReactNode;
+  tone?: "arcane" | "studio";
+  as?: "h1" | "h2";
 }) {
   return (
-    <div className="flex items-baseline gap-4">
-      <span aria-hidden="true" className="font-mono text-sm text-worker">
-        {index}
-      </span>
-      <h2 className="font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
+    <div className="flex flex-col gap-3">
+      <p
+        className={
+          tone === "arcane"
+            ? "font-pixel text-sm uppercase tracking-[0.2em] text-arcane"
+            : "font-mono text-xs uppercase tracking-[0.2em] text-worker"
+        }
+      >
+        {label}
+      </p>
+      <Tag className="max-w-3xl text-balance font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         {children}
-      </h2>
+      </Tag>
     </div>
+  );
+}
+
+export function ExternalArrow() {
+  return (
+    <span aria-hidden="true" className="inline-block translate-y-[-1px]">
+      ↗
+    </span>
   );
 }

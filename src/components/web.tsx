@@ -7,8 +7,8 @@ export function Web() {
   const t = useTranslations("Web");
 
   return (
-    <Section id="web">
-      <SectionHeading index="02">{t("heading")}</SectionHeading>
+    <Section id="web" navSection="about" className="border-t border-hairline">
+      <SectionHeading label={t("label")}>{t("heading")}</SectionHeading>
       <p className="mt-3 max-w-2xl text-fg-muted">{t("intro")}</p>
 
       <ul className="mt-10 grid gap-6 lg:grid-cols-5">

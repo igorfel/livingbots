@@ -1,39 +1,47 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "@/i18n/navigation";
 
-const SECTION_IDS = ["hero", "games", "web", "consulting", "factory", "contact"] as const;
-
+/**
+ * The little bot that perches above the active nav item. Sections declare which
+ * item they belong to with `data-nav-section`; the bot follows whichever one
+ * crosses the middle of the viewport.
+ */
 export function NavCompanion() {
+  const pathname = usePathname();
   const navRef = useRef<HTMLElement | null>(null);
-  const [active, setActive] = useState<string>("hero");
+  const [active, setActive] = useState<string | null>(null);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     navRef.current = document.querySelector("nav[aria-label='Main']");
+    const sections = document.querySelectorAll<HTMLElement>("[data-nav-section]");
+    setActive(sections[0]?.dataset.navSection ?? null);
 
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          const id = (entry.target as HTMLElement).dataset.navSection;
+          if (entry.isIntersecting && id) setActive(id);
         }
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
     );
-    for (const id of SECTION_IDS) {
-      if (id === "hero") continue;
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    }
-
+    sections.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     function reposition() {
       const nav = navRef.current;
-      const target = document.querySelector<HTMLElement>(`[data-nav-item="${active}"]`);
-      if (!nav || !target) return;
+      const target = active
+        ? document.querySelector<HTMLElement>(`[data-nav-item="${active}"]`)
+        : null;
+      if (!nav || !target) {
+        setPos(null);
+        return;
+      }
       const navRect = nav.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
       setPos({

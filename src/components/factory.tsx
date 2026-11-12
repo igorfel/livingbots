@@ -7,8 +7,8 @@ export function Factory() {
   const t = useTranslations("Factory");
 
   return (
-    <Section id="factory">
-      <SectionHeading index="04">{t("heading")}</SectionHeading>
+    <Section id="factory" navSection="about" className="border-t border-hairline">
+      <SectionHeading label={t("label")}>{t("heading")}</SectionHeading>
       <p className="mt-4 max-w-3xl text-fg-muted">{t("intro")}</p>
       <p className="mt-4 max-w-3xl font-display text-lg text-worker">
         {t("framing")}

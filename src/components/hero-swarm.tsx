@@ -68,13 +68,19 @@ export function HeroSwarm({ onSettle, word = "LIVING BOTS", maxBots = MAX_BOTS }
 
     function setupBots() {
       const rect = layout();
-      const fontPx = Math.min((rect.width / word.length) * 1.55, 150);
+      const sampleHeight = rect.height * 0.8;
+      let fontPx = Math.min((rect.width / word.length) * 1.55, 150, sampleHeight * 0.7);
+      // The per-letter heuristic overshoots on wide glyphs (W, M) and long
+      // words — measure and shrink so the word always fits with a margin.
+      ctx!.font = `700 ${fontPx}px system-ui, sans-serif`;
+      const measured = ctx!.measureText(word).width;
+      if (measured > rect.width * 0.92) fontPx *= (rect.width * 0.92) / measured;
       // Sample against 80% of the height so the word centers at 40% — clear of the
       // tagline block that overlays the bottom of the full-bleed scene.
       const points = sampleTextPoints(
         word,
         rect.width,
-        rect.height * 0.8,
+        sampleHeight,
         fontPx,
         "system-ui, sans-serif",
         maxBots,

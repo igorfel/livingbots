@@ -1,70 +1,257 @@
 {
   "Metadata": {
-    "title": "LivingBots — Igor Felipe",
-    "description": "Software que parece vivo: jogos, conceitos web e consultoria técnica por Igor Felipe, desenvolvedor solo na LivingBots."
+    "title": "LivingBots | Estúdio de jogos indie, criador de Arcanes",
+    "description": "A LivingBots é um estúdio de jogos indie de Natal, RN. Agora desenvolvendo Arcanes, um metroidvania em pixel art com mundo aberto à exploração. Jogue a demo no navegador.",
+    "aboutTitle": "Sobre Igor Felipe | LivingBots",
+    "aboutDescription": "Igor Felipe é o desenvolvedor por trás da LivingBots: jogos, sites e orientação técnica para quem está construindo com IA. Veja como trabalhar comigo."
   },
   "Nav": {
+    "home": "Início da LivingBots",
+    "arcanes": "Arcanes",
     "games": "Jogos",
-    "web": "Web",
-    "consulting": "Consultoria",
-    "factory": "Fábrica",
+    "itch": "itch.io",
+    "about": "Sobre",
     "contact": "Contato",
-    "languageToggle": "Idioma"
+    "languageToggle": "Idioma",
+    "external": "abre em nova aba"
   },
   "Hero": {
-    "eyebrow": "LivingBots",
-    "tagline": "Crio software que parece vivo.",
-    "sub": "Jogos, sites e experiências digitais criados para serem rápidos, intuitivos e feitos para evoluir — por Igor Felipe, um desenvolvedor só, com 16 anos de estrada, transformando grandes ideias em realidade, passo a passo.",
-    "ctaGames": "Jogos",
-    "ctaConsulting": "Trabalhar comigo"
+    "eyebrow": "Em desenvolvimento",
+    "presents": "LivingBots apresenta",
+    "titleAlt": "Arcanes",
+    "tagline": "Um metroidvania em pixel art com um mundo aberto à curiosidade, classes de RPG e combate moldado pela arma na sua mão.",
+    "ctaPlay": "Jogar a demo",
+    "ctaItch": "Baixar no itch.io",
+    "ctaMore": "Conheça Arcanes",
+    "free": "Gratuito durante o desenvolvimento",
+    "platforms": {
+      "browser": "Navegador · PC e celular",
+      "windows": "Windows",
+      "gamepad": "Teclado · controle · toque"
+    }
   },
-  "Orbit": {
-    "heading": "O que eu faço",
-    "core": "LivingBots",
-    "games": "Jogos",
-    "web": "Web",
-    "consulting": "Consultoria"
+  "Arcanes": {
+    "label": "Projeto atual",
+    "heading": "Vá a qualquer lugar. Sobreviva se puder.",
+    "lead": "Arcanes é um metroidvania com foco pesado em exploração. Os mapas não são fases desbloqueadas numa ordem definida: o mundo é aberto desde o primeiro minuto, e você pode chegar a lugares que ainda não tem habilidade para enfrentar.",
+    "body": "Os monstros deixam itens que você coleta e vende, e esse loot vira o ouro que melhora seus equipamentos. Por cima disso, há um sistema de classes de RPG, refino de equipamentos e estilos de combate que mudam com a arma que você carrega e com o jeito que você a usa.",
+    "factsHeading": "Ficha técnica",
+    "facts": {
+      "genre": {
+        "label": "Gênero",
+        "value": "Metroidvania 2D em pixel art · RPG"
+      },
+      "platforms": {
+        "label": "Plataformas",
+        "value": "Navegador (PC e celular), Windows"
+      },
+      "controls": {
+        "label": "Controles",
+        "value": "Teclado, controle, toque na tela"
+      },
+      "languages": {
+        "label": "Idiomas",
+        "value": "Português, inglês"
+      },
+      "status": {
+        "label": "Status",
+        "value": "Em desenvolvimento · demo jogável"
+      },
+      "price": {
+        "label": "Preço",
+        "value": "Gratuito durante o desenvolvimento"
+      }
+    },
+    "pillars": {
+      "explore": {
+        "kicker": "Explore",
+        "title": "Um mundo que não pede licença",
+        "desc": "Vales com reflexos vivos na água, florestas que engolem a luz, cavernas sob Eons. Todo caminho está aberto. O único bloqueio é saber se você já está forte o bastante."
+      },
+      "fight": {
+        "kicker": "Lute",
+        "title": "Sua arma é o seu estilo",
+        "desc": "Espadas, adagas e escudos, cada um com seu ritmo. Bloqueie, apare, ataque pelas costas. Como você luta é uma escolha que você faz o tempo todo, não um menu que se escolhe uma vez."
+      },
+      "gear": {
+        "kicker": "Evolua",
+        "title": "Loot vira poder",
+        "desc": "O que os monstros deixam para trás é a sua economia. Venda, refine suas espadas, adagas, armaduras e escudos, e volte para o lugar que te derrotou."
+      }
+    },
+    "extrasHeading": "Também na demo",
+    "extras": {
+      "classes": "Classes de RPG conquistadas pelo que você faz no mundo",
+      "economy": "Uma economia movida inteiramente pela exploração",
+      "world": "Pixel art desenhada à mão, com parallax e reflexo dinâmico na água",
+      "systems": "Inventário, loja, bestiário, contratos de caça e missões com NPCs",
+      "cinematic": "Uma cinemática de abertura ilustrada sobre a história antiga de Luffendor",
+      "anywhere": "Roda no navegador sem instalar nada, ou como aplicativo para Windows"
+    },
+    "galleryHeading": "Capturas de tela",
+    "galleryHint": "Direto da demo atual, sem retoques.",
+    "gallery": {
+      "village": "Lunethiel, a vila élfica onde Lyff cresceu",
+      "darkwoods": "Entrando em Darkwoods",
+      "minotaur": "O Minotauro",
+      "daggers": "Adagas contra um Nightborne",
+      "cave": "As cavernas sob Eons",
+      "lich": "O Rei Lich na cripta",
+      "blacksmith": "A forja de Boron em Lunethiel",
+      "shop": "Vendendo o loot na loja",
+      "bestiary": "O bestiário"
+    },
+    "openImage": "Abrir captura: {caption}",
+    "close": "Fechar",
+    "previous": "Anterior",
+    "next": "Próxima",
+    "imageCount": "{current} de {total}"
+  },
+  "World": {
+    "label": "A história",
+    "heading": "Encontrado no coração de um carvalho",
+    "p1": "Muito antes da Grande Ruptura, Luffendor era inteira, e Lunethiel, a cidade élfica entre as árvores ancestrais, vivia o seu auge.",
+    "p2": "Eras depois, um rei elfo e sua filha encontram um bebê humano sozinho dentro do tronco de um carvalho sagrado. Dão a ele o nome de Lyff e o criam como um dos seus, na sabedoria, na cultura e nos costumes dos Lunethi.",
+    "p3": "Já crescido, Lyff começa sua formação como guerreiro Lunethi. Mas quanto mais longe ele vai, mais claro fica: sua origem, e seu destino, escondem muito mais do que lhe contaram.",
+    "lore": {
+      "luffendor": "Luffendor, antes da Grande Ruptura",
+      "lunethiel": "Lunethiel em seu auge",
+      "oak": "O carvalho ancestral sagrado",
+      "gate": "Lyff diante do portão ancestral"
+    },
+    "charactersHeading": "Quem você vai encontrar",
+    "characters": {
+      "lyff": {
+        "name": "Lyff",
+        "role": "Um humano criado por elfos, em formação como guerreiro Lunethi"
+      },
+      "lethriel": {
+        "name": "Lethriel",
+        "role": "Guardiã da floresta"
+      },
+      "boron": {
+        "name": "Boron",
+        "role": "O ferreiro de Lunethiel. Seu equipamento está nas mãos dele"
+      },
+      "minotaur": {
+        "name": "O Minotauro",
+        "role": "Um chefe que vai testar tudo o que você aprendeu"
+      }
+    },
+    "ctaHeading": "A demo é gratuita. Vá se perder.",
+    "ctaCopy": "Jogue agora no navegador, ou acompanhe Arcanes enquanto ele cresce.",
+    "community": "Entrar no Discord"
   },
   "Games": {
-    "heading": "Jogos",
-    "intro": "Quatro jogos, cada um etiquetado com honestidade sobre o estágio em que realmente está.",
+    "label": "Mais do estúdio",
+    "heading": "Experimentos de jogos web",
+    "intro": "Ideias menores feitas para o navegador: protótipos, demos técnicas e jogos ainda encontrando sua forma. Cada um com uma etiqueta honesta sobre onde realmente está.",
     "items": {
       "shooting-stars": {
-        "status": "Em desenvolvimento — jogável",
-        "blurb": "Enfrente a guerra sem fim e faça o céu cair aos seus pés. Híbrido top-down entre Vampire Survivors e tower defense, de olho no CrazyGames. i18n EN/pt-BR."
+        "status": "Jogável, em desenvolvimento",
+        "blurb": "Enfrente a guerra sem fim e faça o céu cair aos seus pés. Um híbrido top-down entre Vampire Survivors e tower defense."
       },
       "stack-rivals": {
-        "status": "Em desenvolvimento — jogável",
-        "blurb": "Jogo de empilhamento de precisão. Estética synthwave, mapa de calor de mortes, desafio diário com seed fixa, 7 idiomas. SDK da CrazyGames integrado, lançamento pendente."
+        "status": "Jogável, em desenvolvimento",
+        "blurb": "Empilhamento de precisão com visual synthwave, mapa de calor de mortes e desafio diário com seed fixa, em 7 idiomas."
       },
       "bomb-arena": {
-        "status": "Demo jogável de capacidade",
-        "blurb": "Artilharia estilo Gunbound com física real no servidor — construído como demo técnica para um cliente de plataforma de jogos competitivos."
+        "status": "Demo de capacidade",
+        "blurb": "Artilharia estilo Gunbound com física real no servidor. Uma demo técnica para uma plataforma de jogos competitivos."
       },
       "orbit-runner": {
-        "status": "Protótipo jogável",
-        "blurb": "Arcade de um só polegar — um ponto que gruda em planetas em órbita. Arquitetura anti-cheat (verificação por replay), design de economia com fork de modificadores."
+        "status": "Protótipo",
+        "blurb": "Arcade de um polegar só: um ponto que gruda em planetas em órbita, com pontuação verificada por replay."
       }
     },
     "playLabel": "Jogar",
     "loadPreview": "Abrir prévia ao vivo",
-    "arenaHint": "voe até um jogo · ou só toque nele",
-    "targetLocked": "Alvo travado",
-    "viewCard": "Ver detalhes",
-    "dismiss": "Fechar",
     "itchLabel": "itch.io",
-    "publishedHeading": "Publicados no itch.io",
-    "published": {
-      "arcanes": {
-        "blurb": "Explore a terra de Hyperion e todas as suas provações."
-      },
-      "smplanes": {
-        "blurb": "Jogue contra todo mundo neste jogo frenético."
-      }
-    },
     "closingLine": "Jogos anteriores foram publicados na Google Play e desde então foram removidos da loja."
   },
+  "Itch": {
+    "label": "Jogue todos",
+    "heading": "LivingBots no itch.io",
+    "copy": "Todas as builds para baixar, devlogs e jogos de game jam ficam na página do itch.io, incluindo a versão de Arcanes para Windows.",
+    "cta": "Visitar livingbots.itch.io",
+    "items": {
+      "arcanes": "Metroidvania em pixel art · projeto atual",
+      "shooting-stars": "Guerra sem fim, céu caindo",
+      "arcanes-brief-story": "Explore a terra de Hyperion e todas as suas provações.",
+      "smplanes": "Jogue contra todo mundo neste jogo frenético."
+    }
+  },
+  "Studio": {
+    "label": "O estúdio",
+    "heading": "A LivingBots é um desenvolvedor com muita teimosia.",
+    "copy": "Sou o Igor Felipe e escrevo código há 16 anos. De Natal, no Rio Grande do Norte, faço os jogos em que eu gostaria de me perder, e ajudo outras pessoas a construírem os delas.",
+    "cta": "Sobre mim e como trabalhar juntos",
+    "contactCta": "Dizer oi"
+  },
+  "About": {
+    "label": "Sobre",
+    "heading": "Oi, eu sou o Igor.",
+    "lead": "Sou o desenvolvedor por trás da LivingBots, um estúdio de jogos de uma pessoa só em Natal, RN. Escrevo software há 16 anos e, hoje em dia, a maior parte das minhas horas vai para Arcanes.",
+    "p1": "Gosto de quebrar ideias ambiciosas em etapas pequenas o bastante para realmente sair do papel. Foi assim que Arcanes passou de um rascunho a uma demo jogável no navegador, e é assim que eu trabalho com quem me contrata.",
+    "p2": "Arcanes não é um esforço solo em tudo: a Heloiza cuida das nossas redes sociais e o Felipe cuida da comunidade. O código, os pipelines e a maioria das madrugadas ficam comigo.",
+    "now": "Agora",
+    "nowItems": {
+      "arcanes": "Construindo Arcanes: combate, novas áreas e a próxima demo",
+      "advisory": "Assessorando uma plataforma de jogos competitivos em arquitetura de backend",
+      "factory": "Rodando minha própria fábrica de software: eu escrevo os tickets, o pipeline entrega o código"
+    },
+    "skillsHeading": "Com o que eu trabalho",
+    "skills": {
+      "games": {
+        "title": "Jogos",
+        "desc": "Canvas 2D e engines web, design de metroidvania e arcade, backends multiplayer com SpacetimeDB, SDKs de plataformas."
+      },
+      "web": {
+        "title": "Web",
+        "desc": "Sites em Next.js, TypeScript e Tailwind que carregam rápido, se leem bem e são fáceis de continuar evoluindo."
+      },
+      "guidance": {
+        "title": "Orientação técnica",
+        "desc": "Fluxo de trabalho, segurança e arquitetura para founders e vibe coders construindo com IA."
+      }
+    }
+  },
+  "Work": {
+    "label": "Trabalhe comigo",
+    "heading": "Como podemos trabalhar juntos",
+    "intro": "Seja um jogo, um site ou um código que começou a brigar com você, eu trabalho em checkpoints curtos e visíveis, então você sempre sabe o que está pronto e o que vem a seguir.",
+    "offers": {
+      "audit": {
+        "title": "Auditoria pontual",
+        "desc": "Eu analiso seu projeto e te entrego um relatório claro: o que está quebrado, o que está prestes a quebrar e em que ordem consertar."
+      },
+      "accompaniment": {
+        "title": "Acompanhamento contínuo",
+        "desc": "Uma revisão recorrente do seu código e das suas decisões, para pegar os problemas enquanto ainda são pequenos."
+      },
+      "partnership": {
+        "title": "Parceria de desenvolvimento",
+        "desc": "Eu construo junto com você, etapa por etapa, seja um jogo, um produto web ou uma funcionalidade."
+      }
+    },
+    "stepsHeading": "Como funciona",
+    "steps": {
+      "talk": {
+        "title": "Me conte o que você está construindo",
+        "desc": "Um email curto já basta. Vou ser sincero sobre se sou a pessoa certa."
+      },
+      "checkpoint": {
+        "title": "Combinamos o primeiro checkpoint",
+        "desc": "Algo pequeno, concreto e útil. Nada de plano de seis meses."
+      },
+      "ship": {
+        "title": "Eu entrego, você revisa",
+        "desc": "Todo checkpoint termina com algo que você pode ver, jogar ou rodar."
+      }
+    }
+  },
   "Web": {
+    "label": "Trabalhos selecionados",
     "heading": "Web",
     "intro": "Trabalhos de conceito e demonstração: sites feitos para mostrar o que eu construiria para você.",
     "items": {
@@ -81,8 +268,9 @@
     }
   },
   "Consulting": {
-    "heading": "Consultoria",
-    "intro": "Orientação técnica para founders e “vibe coders” construindo com IA — fluxo de desenvolvimento, segurança, arquitetura.",
+    "label": "Orientação técnica",
+    "heading": "Um sexto sentido para o seu código",
+    "intro": "Orientação técnica para founders e “vibe coders” construindo com IA: fluxo de desenvolvimento, segurança e arquitetura.",
     "stages": {
       "see": {
         "label": "Ver",
@@ -100,23 +288,19 @@
         "label": "Fortalecer",
         "desc": "Uma treliça se fecha ao redor do código recuperado, para que continue assim."
       }
-    },
-    "offersHeading": "Como podemos trabalhar juntos",
-    "offers": {
-      "audit": "Auditoria pontual",
-      "accompaniment": "Acompanhamento contínuo",
-      "partnership": "Parceria de desenvolvimento"
     }
   },
   "Factory": {
+    "label": "Bastidores",
     "heading": "A Fábrica",
     "intro": "Estou construindo minha própria fábrica de software: issues reais do GitHub entram de um lado, código revisado e testado sai do outro. O Inngest orquestra os workflows, o Claude Code implementa sem supervisão, e três gates determinísticos (tsc, ESLint, Vitest) decidem o que entra na main. O que reprova volta para o agente com feedback e é carregado de novo. Branches não confiáveis rodam atrás de um adapter de trusted-ref, então nada escala permissões.",
     "framing": "Eu escrevo os tickets, o pipeline implementa.",
     "gatesHeading": "Os gates que todo ticket precisa atravessar"
   },
   "Contact": {
-    "heading": "Contato",
-    "copy": "Me conte o que você está construindo — eu te digo com sinceridade se posso ajudar e como seria o primeiro checkpoint.",
+    "label": "Contato",
+    "heading": "Vamos conversar",
+    "copy": "Me conte o que você está construindo. Eu te digo com sinceridade se posso ajudar e como seria o primeiro checkpoint. Imprensa e organizadores de eventos também são bem-vindos.",
     "swarmWord": "VAMOS CONSTRUIR",
     "emailCta": "Me mande um email",
     "linksHeading": "Outros canais",
@@ -127,6 +311,14 @@
     }
   },
   "Footer": {
-    "line": "LivingBots — Igor Felipe"
+    "line": "LivingBots, por Igor Felipe",
+    "place": "Jogos indie feitos em Natal, RN",
+    "follow": "Siga o estúdio",
+    "socials": {
+      "discord": "Discord",
+      "youtube": "YouTube",
+      "instagram": "Instagram",
+      "itch": "itch.io"
+    }
   }
 }
