@@ -11,7 +11,7 @@ interface GamePreviewProps {
   loadLabel: string;
 }
 
-const GLYPH_SCALE = 3;
+const GLYPH_SCALE = 2.4;
 
 /**
  * Card visual for a game: an animated vignette of the game's arena glyph,
@@ -81,7 +81,7 @@ export function GamePreview({ gameId, playHref, name, loadLabel }: GamePreviewPr
   return (
     <div
       ref={containerRef}
-      className="relative -mx-2 -mt-2 aspect-video overflow-hidden rounded-xl bg-ink/60"
+      className="relative aspect-[4/3] overflow-hidden rounded-xl bg-ink/60"
     >
       {live ? (
         <iframe

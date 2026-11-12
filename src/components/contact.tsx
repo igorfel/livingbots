@@ -8,8 +8,8 @@ export function Contact() {
   const t = useTranslations("Contact");
 
   return (
-    <Section id="contact" className="border-b-0">
-      <SectionHeading index="05">{t("heading")}</SectionHeading>
+    <Section id="contact" navSection="contact" className="border-t border-hairline">
+      <SectionHeading label={t("label")}>{t("heading")}</SectionHeading>
       <p className="mt-4 max-w-2xl text-fg-muted">{t("copy")}</p>
 
       <div className="relative mt-10 aspect-21/6 min-h-36 w-full" aria-hidden="true">
