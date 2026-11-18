@@ -154,6 +154,28 @@ export const itchGames = [
   },
 ] as const;
 
+/** FreeSpace, the studio's disk cleaner for dev machines. Targets are real paths/commands, so they stay untranslated. */
+export const freespace = {
+  href: {
+    en: "https://freespace-now.vercel.app/",
+    pt: "https://freespace-now.vercel.app/pt-br",
+  },
+  scans: [
+    {
+      name: "Windows",
+      targets: ["node_modules", ".venv", "npm-cache", "%TEMP%", "SoftwareDistribution", "*.dmp"],
+    },
+    {
+      name: "WSL",
+      targets: ["/var/cache/apt", "journald", "/tmp", "~/.vscode-server", "~/.nvm", "ext4.vhdx"],
+    },
+    {
+      name: "Docker",
+      targets: ["builder prune", "image prune", "container prune", "volume prune"],
+    },
+  ],
+} as const;
+
 export const webProjects = [
   {
     id: "acai-joca",

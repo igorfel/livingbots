@@ -10,6 +10,7 @@
     "arcanes": "Arcanes",
     "games": "Games",
     "itch": "itch.io",
+    "tools": "Tools",
     "about": "About",
     "contact": "Contact",
     "languageToggle": "Language",
@@ -179,6 +180,19 @@
       "arcanes": "Pixel-art metroidvania · current project",
       "shooting-stars": "Endless war, falling sky",
       "smplanes": "Play against everyone in this frenetic game."
+    }
+  },
+  "Tools": {
+    "label": "Tools",
+    "heading": "Software for developers",
+    "intro": "Games come first, but sometimes a tool I build for my own workflow is good enough to share.",
+    "freespace": {
+      "platform": "Windows 11",
+      "tagline": "Get back the gigabytes your dev tools leave behind.",
+      "blurb": "A disk cleaner for developer machines. FreeSpace scans Windows, WSL and Docker for build leftovers, package caches and temp files, rates each item by how safe it is to delete, and removes nothing until you confirm.",
+      "local": "Runs 100% locally. No account, no cloud, no telemetry.",
+      "cta": "Get FreeSpace",
+      "scansLabel": "What FreeSpace scans"
     }
   },
   "Studio": {
