@@ -149,13 +149,9 @@
     "heading": "Experimentos de jogos web",
     "intro": "Ideias menores feitas para o navegador: protótipos, demos técnicas e jogos ainda encontrando sua forma. Cada um com uma etiqueta honesta sobre onde realmente está.",
     "items": {
-      "shooting-stars": {
+      "shooting-stars-3d": {
         "status": "Jogável, em desenvolvimento",
-        "blurb": "Enfrente a guerra sem fim e faça o céu cair aos seus pés. Um híbrido top-down entre Vampire Survivors e tower defense."
-      },
-      "stack-rivals": {
-        "status": "Jogável, em desenvolvimento",
-        "blurb": "Empilhamento de precisão com visual synthwave, mapa de calor de mortes e desafio diário com seed fixa, em 7 idiomas."
+        "blurb": "Tower defense incremental em 3D: assuma o canhão antiaéreo, antecipe os tiros para derrubar os bombardeiros e invista a sucata em construções e pesquisa. Todo modelo é gerado por código."
       },
       "bomb-arena": {
         "status": "Demo de capacidade",
@@ -164,10 +160,38 @@
       "orbit-runner": {
         "status": "Protótipo",
         "blurb": "Arcade de um polegar só: um ponto que gruda em planetas em órbita, com pontuação verificada por replay."
+      },
+      "idle-forge": {
+        "status": "No ar",
+        "blurb": "Um clicker idle sobre forjar poder elemental: construa forjas, crie artefatos, encadeie sinergias e ascenda. Com contas e ranking global, em inglês e português."
+      },
+      "shooting-stars": {
+        "status": "Jogável, em desenvolvimento",
+        "blurb": "Enfrente a guerra sem fim e faça o céu cair aos seus pés. Um híbrido top-down entre Vampire Survivors e tower defense."
+      },
+      "stack-rivals": {
+        "status": "Jogável, em desenvolvimento",
+        "blurb": "Empilhamento de precisão com visual synthwave, mapa de calor de mortes e desafio diário com seed fixa, em 7 idiomas."
+      },
+      "wordle-royale": {
+        "status": "No ar",
+        "blurb": "Adivinhação de palavras em modo competitivo: salas multiplayer, níveis de jogador e ranking geral."
+      },
+      "outward": {
+        "status": "Protótipo",
+        "blurb": "Estratégia idle minimalista: gere energia, matéria e sinal, escaneie o mapa e conquiste luas, planetas e anomalias por bônus passivos."
       }
     },
     "playLabel": "Jogar",
-    "loadPreview": "Abrir prévia ao vivo",
+    "playHere": "Jogar aqui",
+    "nowPlaying": "Jogando agora",
+    "loading": "Carregando {name}…",
+    "fullscreen": "Tela cheia",
+    "exitFullscreen": "Sair da tela cheia",
+    "openNewTab": "Abrir em nova aba",
+    "close": "Fechar jogo",
+    "showAll": "Ver todos os {count} jogos",
+    "showFewer": "Mostrar menos",
     "itchLabel": "itch.io",
     "closingLine": "Jogos anteriores foram publicados na Google Play e desde então foram removidos da loja."
   },
