@@ -73,7 +73,7 @@
       "fight": {
         "kicker": "Fight",
         "title": "Your weapon is your playstyle",
-        "desc": "Swords, daggers and shields, each with its own rhythm. Block, parry, strike from behind. How you fight is a choice you keep making, not a menu you pick once."
+        "desc": "Swords, daggers, long axes and a bow, each with its own rhythm. Block, parry, strike from behind. How you fight is a choice you keep making, not a menu you pick once."
       },
       "gear": {
         "kicker": "Gear up",
@@ -93,14 +93,14 @@
     "galleryHeading": "Screenshots",
     "galleryHint": "Straight from the current demo, no retouching.",
     "gallery": {
-      "village": "Lunethiel, the elven village where Lyff grew up",
+      "festival": "The graduates' festival at the foot of Lunethiel's great tree",
       "darkwoods": "Entering the Darkwoods",
       "minotaur": "The Minotaur",
-      "daggers": "Daggers against a Nightborne",
+      "hollowVessel": "The Hollow Vessel, the Prologue's boss",
       "cave": "The caves under Eons",
       "lich": "The Lich King in the crypt",
-      "blacksmith": "Boron's forge in Lunethiel",
-      "shop": "Selling loot at the shop",
+      "bow": "The bow, at the lake in Eons Valley",
+      "wardrobe": "The Wardrobe: every class's look and perks",
       "bestiary": "The bestiary"
     },
     "openImage": "Open screenshot: {caption}",

@@ -7,18 +7,18 @@ import arcanesTitle from "@/assets/arcanes/title.webp";
 import arcanesIcon from "@/assets/arcanes/icon.webp";
 import botHead from "@/assets/arcanes/bot-head.png";
 
-import shotVillage from "@/assets/arcanes/shots/lunethiel-village.webp";
-import shotBlacksmith from "@/assets/arcanes/shots/lunethiel-blacksmith-boron.webp";
+import shotFestival from "@/assets/arcanes/shots/graduates-festival.webp";
+import shotHollowVessel from "@/assets/arcanes/shots/hollow-vessel.webp";
 import shotValley from "@/assets/arcanes/shots/eons-valley.webp";
 import shotDarkwoods from "@/assets/arcanes/shots/darkwoods.webp";
 import shotCave from "@/assets/arcanes/shots/eons-cave.webp";
-import shotDaggers from "@/assets/arcanes/shots/daggers-vs-nightborne.webp";
-import shotShield from "@/assets/arcanes/shots/shield-block.webp";
+import shotLongAxe from "@/assets/arcanes/shots/long-axe.webp";
+import shotBow from "@/assets/arcanes/shots/bow-at-the-lake.webp";
 import shotMinotaur from "@/assets/arcanes/shots/minotaur-boss.webp";
 import shotLich from "@/assets/arcanes/shots/lich-king-in-the-crypt.webp";
-import shotShop from "@/assets/arcanes/shots/shop-selling-loot.webp";
 import shotRefining from "@/assets/arcanes/shots/equipment-refining.webp";
 import shotBestiary from "@/assets/arcanes/shots/bestiary.webp";
+import shotWardrobe from "@/assets/arcanes/shots/class-wardrobe.webp";
 
 import artLuffendor from "@/assets/arcanes/art/luffendor-before-the-great-rupture.webp";
 import artLunethiel from "@/assets/arcanes/art/lunethiel-at-its-height.webp";
@@ -33,7 +33,7 @@ import charMinotaur from "@/assets/arcanes/chars/minotaur-boss.png";
 export const brand = { botHead };
 
 export const arcanes = {
-  playHref: "https://arcanes.vercel.app/",
+  playHref: "https://www.arcanes.com.br/",
   itchHref: "https://livingbots.itch.io/arcanes",
   discordHref: "https://discord.gg/bznrpkUNFM",
   heroArt,
@@ -70,7 +70,7 @@ export const arcanesFacts = [
 /** Three headline pillars, each paired with the screenshot that proves it. */
 export const arcanesPillars = [
   { id: "explore", image: shotValley },
-  { id: "fight", image: shotShield },
+  { id: "fight", image: shotLongAxe },
   { id: "gear", image: shotRefining },
 ] as const satisfies readonly { id: string; image: StaticImageData }[];
 
@@ -84,14 +84,14 @@ export const arcanesExtras = [
 ] as const;
 
 export const arcanesGallery = [
-  { id: "village", image: shotVillage },
+  { id: "festival", image: shotFestival },
   { id: "darkwoods", image: shotDarkwoods },
   { id: "minotaur", image: shotMinotaur },
-  { id: "daggers", image: shotDaggers },
+  { id: "hollowVessel", image: shotHollowVessel },
   { id: "cave", image: shotCave },
   { id: "lich", image: shotLich },
-  { id: "blacksmith", image: shotBlacksmith },
-  { id: "shop", image: shotShop },
+  { id: "bow", image: shotBow },
+  { id: "wardrobe", image: shotWardrobe },
   { id: "bestiary", image: shotBestiary },
 ] as const satisfies readonly { id: string; image: StaticImageData }[];
 
