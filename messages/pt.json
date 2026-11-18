@@ -10,6 +10,7 @@
     "arcanes": "Arcanes",
     "games": "Jogos",
     "itch": "itch.io",
+    "tools": "Ferramentas",
     "about": "Sobre",
     "contact": "Contato",
     "languageToggle": "Idioma",
@@ -179,6 +180,19 @@
       "arcanes": "Metroidvania em pixel art · projeto atual",
       "shooting-stars": "Guerra sem fim, céu caindo",
       "smplanes": "Jogue contra todo mundo neste jogo frenético."
+    }
+  },
+  "Tools": {
+    "label": "Ferramentas",
+    "heading": "Software para desenvolvedores",
+    "intro": "Os jogos vêm primeiro, mas às vezes uma ferramenta que faço para o meu próprio fluxo de trabalho fica boa o bastante para compartilhar.",
+    "freespace": {
+      "platform": "Windows 11",
+      "tagline": "Recupere os gigabytes que suas ferramentas de dev deixam para trás.",
+      "blurb": "Um limpador de disco para máquinas de desenvolvedor. O FreeSpace varre Windows, WSL e Docker atrás de sobras de build, caches de pacotes e arquivos temporários, classifica cada item pelo quão seguro é apagar e não remove nada até você confirmar.",
+      "local": "Roda 100% local. Sem conta, sem nuvem, sem telemetria.",
+      "cta": "Conhecer o FreeSpace",
+      "scansLabel": "O que o FreeSpace varre"
     }
   },
   "Studio": {

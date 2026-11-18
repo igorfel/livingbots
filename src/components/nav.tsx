@@ -73,6 +73,15 @@ export function Nav() {
             </a>
           </li>
           <li>
+            <Link
+              href={{ pathname: "/", hash: "tools" }}
+              data-nav-item="tools"
+              className={linkClass}
+            >
+              {t("tools")}
+            </Link>
+          </li>
+          <li>
             <Link href="/about" data-nav-item="about" className={linkClass}>
               {t("about")}
             </Link>

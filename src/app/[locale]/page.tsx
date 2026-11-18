@@ -5,6 +5,7 @@ import { ArcanesWorld } from "@/components/arcanes-world";
 import { Games } from "@/components/games";
 import { ItchBand } from "@/components/itch-band";
 import { StudioTeaser } from "@/components/studio-teaser";
+import { Tools } from "@/components/tools";
 
 export default async function HomePage({
   params,
@@ -21,6 +22,7 @@ export default async function HomePage({
       <ArcanesWorld />
       <Games />
       <ItchBand />
+      <Tools />
       <StudioTeaser />
     </>
   );
