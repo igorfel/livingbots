@@ -73,7 +73,7 @@
       "fight": {
         "kicker": "Lute",
         "title": "Sua arma é o seu estilo",
-        "desc": "Espadas, adagas e escudos, cada um com seu ritmo. Bloqueie, apare, ataque pelas costas. Como você luta é uma escolha que você faz o tempo todo, não um menu que se escolhe uma vez."
+        "desc": "Espadas, adagas, machados longos e arco, cada um com seu ritmo. Bloqueie, apare, ataque pelas costas. Como você luta é uma escolha que você faz o tempo todo, não um menu que se escolhe uma vez."
       },
       "gear": {
         "kicker": "Evolua",
@@ -93,14 +93,14 @@
     "galleryHeading": "Capturas de tela",
     "galleryHint": "Direto da demo atual, sem retoques.",
     "gallery": {
-      "village": "Lunethiel, a vila élfica onde Lyff cresceu",
+      "festival": "O festival dos formandos, ao pé da grande árvore de Lunethiel",
       "darkwoods": "Entrando em Darkwoods",
       "minotaur": "O Minotauro",
-      "daggers": "Adagas contra um Nightborne",
+      "hollowVessel": "O Receptáculo Oco, chefe do Prólogo",
       "cave": "As cavernas sob Eons",
       "lich": "O Rei Lich na cripta",
-      "blacksmith": "A forja de Boron em Lunethiel",
-      "shop": "Vendendo o loot na loja",
+      "bow": "O arco, no Lago do Vale das Eras",
+      "wardrobe": "O Guarda-roupa: o visual e as vantagens de cada classe",
       "bestiary": "O bestiário"
     },
     "openImage": "Abrir captura: {caption}",
