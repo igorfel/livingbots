@@ -109,33 +109,71 @@ export const arcanesCharacters = [
   { id: "minotaur", image: charMinotaur },
 ] as const satisfies readonly { id: string; image: StaticImageData }[];
 
+/**
+ * Web game experiments. The `featured` four show by default; the rest sit
+ * behind the "see all" toggle. Featured order is the display order.
+ */
 export const games = [
   {
-    id: "shooting-stars",
-    name: "Shooting Stars",
-    playHref: "https://shootingstars-conquest.vercel.app/",
-    itchHref: "https://livingbots.itch.io/shooting-stars",
-    stack: ["Canvas 2D", "TypeScript", "Vite"],
-  },
-  {
-    id: "stack-rivals",
-    name: "Stack Rivals",
-    playHref: "https://stack-rivals.vercel.app/",
-    stack: ["Canvas 2D", "TypeScript", "CrazyGames SDK"],
+    id: "shooting-stars-3d",
+    name: "Shooting Stars 3D",
+    playHref: "https://shooting-stars-3d.vercel.app/",
+    stack: ["Three.js", "TypeScript", "Vite"],
+    featured: true,
   },
   {
     id: "bomb-arena",
     name: "Bomb Arena",
     playHref: "https://bombarena.vercel.app/",
     stack: ["SpacetimeDB", "TypeScript"],
+    featured: true,
   },
   {
     id: "orbit-runner",
     name: "Orbit Runner",
     playHref: "https://orbital-runner.vercel.app/",
     stack: ["HTML5", "SpacetimeDB"],
+    featured: true,
+  },
+  {
+    id: "idle-forge",
+    name: "Idle Forge",
+    playHref: "https://www.idleforge.com.br/",
+    stack: ["Next.js", "Supabase", "Zustand"],
+    featured: true,
+  },
+  {
+    id: "shooting-stars",
+    name: "Shooting Stars",
+    playHref: "https://shootingstars-conquest.vercel.app/",
+    itchHref: "https://livingbots.itch.io/shooting-stars",
+    stack: ["Canvas 2D", "TypeScript", "Vite"],
+    featured: false,
+  },
+  {
+    id: "stack-rivals",
+    name: "Stack Rivals",
+    playHref: "https://stack-rivals.vercel.app/",
+    stack: ["Canvas 2D", "TypeScript", "CrazyGames SDK"],
+    featured: false,
+  },
+  {
+    id: "wordle-royale",
+    name: "Wordle Royale",
+    playHref: "https://wordle-royale.vercel.app/",
+    stack: ["Next.js", "Supabase"],
+    featured: false,
+  },
+  {
+    id: "outward",
+    name: "Outward",
+    playHref: "https://outward-conquest.vercel.app/",
+    stack: ["Next.js", "React Three Fiber", "Zustand"],
+    featured: false,
   },
 ] as const;
+
+export type Game = (typeof games)[number];
 
 export const itchProfileHref = "https://livingbots.itch.io";
 

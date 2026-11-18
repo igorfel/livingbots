@@ -149,13 +149,9 @@
     "heading": "Web game experiments",
     "intro": "Smaller ideas built for the browser: prototypes, technical demos and games still finding their shape. Each one is honestly labeled with where it stands.",
     "items": {
-      "shooting-stars": {
+      "shooting-stars-3d": {
         "status": "Playable, in development",
-        "blurb": "Face the endless war, and make the sky fall at your feet. A top-down Vampire Survivors × tower defense hybrid."
-      },
-      "stack-rivals": {
-        "status": "Playable, in development",
-        "blurb": "Precision stacking with a synthwave look, death heatmaps and a seeded daily challenge, in 7 languages."
+        "blurb": "A 3D tower-defense incremental: man the flak gun, lead your shots to bring the bombers down, then spend the scrap on buildings and research. Every mesh is generated in code."
       },
       "bomb-arena": {
         "status": "Proof of capability",
@@ -164,10 +160,38 @@
       "orbit-runner": {
         "status": "Prototype",
         "blurb": "One-thumb arcade: a dot latching onto orbiting planets, with replay-verified scores."
+      },
+      "idle-forge": {
+        "status": "Live",
+        "blurb": "An idle clicker about forging elemental power: build forges, craft artifacts, chain synergies and ascend. With accounts and a global ranking, in English and Portuguese."
+      },
+      "shooting-stars": {
+        "status": "Playable, in development",
+        "blurb": "Face the endless war, and make the sky fall at your feet. A top-down Vampire Survivors × tower defense hybrid."
+      },
+      "stack-rivals": {
+        "status": "Playable, in development",
+        "blurb": "Precision stacking with a synthwave look, death heatmaps and a seeded daily challenge, in 7 languages."
+      },
+      "wordle-royale": {
+        "status": "Live",
+        "blurb": "Word guessing gone competitive: multiplayer rooms, player levels and an all-time ranking."
+      },
+      "outward": {
+        "status": "Prototype",
+        "blurb": "A minimalist idle strategy game: generate energy, matter and signal, scan the map and conquer moons, planets and anomalies for passive bonuses."
       }
     },
     "playLabel": "Play",
-    "loadPreview": "Load live preview",
+    "playHere": "Play here",
+    "nowPlaying": "Now playing",
+    "loading": "Loading {name}…",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit fullscreen",
+    "openNewTab": "Open in a new tab",
+    "close": "Close game",
+    "showAll": "See all {count} games",
+    "showFewer": "Show fewer",
     "itchLabel": "itch.io",
     "closingLine": "Earlier games were published on Google Play and have since been delisted."
   },
