@@ -36,6 +36,7 @@
     "lead": "Arcanes é um metroidvania com foco pesado em exploração. Os mapas não são fases desbloqueadas numa ordem definida: o mundo é aberto desde o primeiro minuto, e você pode chegar a lugares que ainda não tem habilidade para enfrentar.",
     "body": "Os monstros deixam itens que você coleta e vende, e esse loot vira o ouro que melhora seus equipamentos. Por cima disso, há um sistema de classes de RPG, refino de equipamentos e estilos de combate que mudam com a arma que você carrega e com o jeito que você a usa.",
     "factsHeading": "Ficha técnica",
+    "pressKit": "Kit de imprensa",
     "facts": {
       "genre": {
         "label": "Gênero",
@@ -177,7 +178,6 @@
     "items": {
       "arcanes": "Metroidvania em pixel art · projeto atual",
       "shooting-stars": "Guerra sem fim, céu caindo",
-      "arcanes-brief-story": "Explore a terra de Hyperion e todas as suas provações.",
       "smplanes": "Jogue contra todo mundo neste jogo frenético."
     }
   },
