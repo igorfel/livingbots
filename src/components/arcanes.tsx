@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Section, SectionHeading } from "@/components/section";
+import { ExternalArrow, Section, SectionHeading } from "@/components/section";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import {
   arcanes,
@@ -8,6 +8,7 @@ import {
   arcanesFacts,
   arcanesGallery,
   arcanesPillars,
+  arcanesPressKits,
 } from "@/lib/content";
 
 export function Arcanes() {
@@ -55,6 +56,25 @@ export function Arcanes() {
                 <dd className="text-fg">{t(`facts.${fact}.value`)}</dd>
               </div>
             ))}
+            <div className="grid grid-cols-[7rem_1fr] gap-3 border-t border-arcane/15 pt-4 text-sm">
+              <dt className="font-mono text-xs uppercase tracking-wider text-fg-muted">
+                {t("pressKit")}
+              </dt>
+              <dd className="flex flex-wrap gap-x-4 gap-y-1">
+                {arcanesPressKits.map((kit) => (
+                  <a
+                    key={kit.lang}
+                    href={kit.href}
+                    hrefLang={kit.lang}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-arcane underline-offset-4 transition-colors hover:text-fg hover:underline"
+                  >
+                    {kit.label} <ExternalArrow />
+                  </a>
+                ))}
+              </dd>
+            </div>
           </dl>
         </aside>
       </div>

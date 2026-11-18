@@ -43,6 +43,20 @@ export const arcanes = {
   icon: arcanesIcon,
 } as const;
 
+/** Press kits on Google Drive, each labeled in its own language. */
+export const arcanesPressKits = [
+  {
+    lang: "en",
+    label: "English",
+    href: "https://drive.google.com/drive/folders/1AqRIIq8X-KMUWoQ0DeJ1YGcOEki3KU_C",
+  },
+  {
+    lang: "pt-BR",
+    label: "Português",
+    href: "https://drive.google.com/drive/folders/1wIfbHOgLgESy6Rx5il9IcoXpOQvyXSf7",
+  },
+] as const;
+
 /** Spec-sheet rows; labels and values live in messages under Arcanes.facts. */
 export const arcanesFacts = [
   "genre",
@@ -132,11 +146,6 @@ export const itchGames = [
     id: "shooting-stars",
     name: "Shooting Stars",
     href: "https://livingbots.itch.io/shooting-stars",
-  },
-  {
-    id: "arcanes-brief-story",
-    name: "Arcanes: A Brief Story",
-    href: "https://livingbots.itch.io/arcanes-a-brief-story",
   },
   {
     id: "smplanes",
