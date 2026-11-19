@@ -149,6 +149,10 @@
     "heading": "Web game experiments",
     "intro": "Smaller ideas built for the browser: prototypes, technical demos and games still finding their shape. Each one is honestly labeled with where it stands.",
     "items": {
+      "brinewake": {
+        "status": "Playable, in development",
+        "blurb": "A 3D naval MMO-RPG: sail five seas, sink sea monsters and rival captains, run harbor quests and work your way up from a 2-gun cutter to a 20-gun man-o'-war. Solo today, built for multiplayer."
+      },
       "shooting-stars-3d": {
         "status": "Playable, in development",
         "blurb": "A 3D tower-defense incremental: man the flak gun, lead your shots to bring the bombers down, then spend the scrap on buildings and research. Every mesh is generated in code."

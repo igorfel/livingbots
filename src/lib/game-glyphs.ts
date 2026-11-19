@@ -1,4 +1,5 @@
 export type GameId =
+  | "brinewake"
   | "shooting-stars"
   | "shooting-stars-3d"
   | "stack-rivals"
@@ -234,6 +235,69 @@ function drawNodeMap(ctx: CanvasRenderingContext2D, cx: number, cy: number, t: n
   ctx.fill();
 }
 
+/** A square-rigged ship rolling on scrolling swells, pennant snapping at the masthead. */
+function drawShip(ctx: CanvasRenderingContext2D, cx: number, cy: number, t: number) {
+  ctx.lineWidth = 1.5;
+  for (let row = 0; row < 2; row++) {
+    const y = cy + 10 + row * 4;
+    const shift = t * (row ? 5 : 8);
+    ctx.strokeStyle = `rgba(61,214,255,${row ? 0.2 : 0.4})`;
+    ctx.beginPath();
+    for (let x = -14; x <= 14; x++) {
+      const py = y + Math.sin((x + shift) * 0.55) * 1.2;
+      if (x === -14) ctx.moveTo(cx + x, py);
+      else ctx.lineTo(cx + x, py);
+    }
+    ctx.stroke();
+  }
+
+  ctx.save();
+  ctx.translate(cx, cy + 6);
+  ctx.rotate(Math.sin(t * 1.6) * 0.06);
+
+  ctx.fillStyle = WORKER_COLOR;
+  ctx.beginPath();
+  ctx.moveTo(-12, -3);
+  ctx.lineTo(12, -4);
+  ctx.lineTo(8, 3);
+  ctx.lineTo(-8, 3);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = "rgba(232,236,241,0.6)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, -3);
+  ctx.lineTo(0, -18);
+  ctx.stroke();
+
+  // Two square sails, both bellied out toward the bow.
+  ctx.fillStyle = "rgba(232,236,241,0.85)";
+  for (const [top, bottom, half] of [
+    [-16, -11.5, 5],
+    [-10.5, -5, 7],
+  ]) {
+    const mid = (top + bottom) / 2;
+    ctx.beginPath();
+    ctx.moveTo(-half, top);
+    ctx.lineTo(half, top);
+    ctx.quadraticCurveTo(half + 2.5, mid, half, bottom);
+    ctx.lineTo(-half, bottom);
+    ctx.quadraticCurveTo(-half + 2.5, mid, -half, top);
+    ctx.fill();
+  }
+
+  ctx.fillStyle = FOREMAN_COLOR;
+  ctx.beginPath();
+  ctx.moveTo(0, -18);
+  ctx.lineTo(6, -17 + Math.sin(t * 5) * 1.2);
+  ctx.lineTo(0, -15.5);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
+}
+
 /** Each game's Canvas glyph — shared by the arena targets and the card vignettes. */
 export function drawGameGlyph(
   ctx: CanvasRenderingContext2D,
@@ -243,6 +307,8 @@ export function drawGameGlyph(
   t: number,
 ) {
   switch (id) {
+    case "brinewake":
+      return drawShip(ctx, x, y, t);
     case "shooting-stars":
       return drawShootingStar(ctx, x, y);
     case "shooting-stars-3d":

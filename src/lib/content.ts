@@ -115,6 +115,13 @@ export const arcanesCharacters = [
  */
 export const games = [
   {
+    id: "brinewake",
+    name: "Brinewake",
+    playHref: "https://brinewake-online.vercel.app/",
+    stack: ["Three.js", "TypeScript", "WebSockets"],
+    featured: true,
+  },
+  {
     id: "shooting-stars-3d",
     name: "Shooting Stars 3D",
     playHref: "https://shooting-stars-3d.vercel.app/",
@@ -126,13 +133,6 @@ export const games = [
     name: "Bomb Arena",
     playHref: "https://bombarena.vercel.app/",
     stack: ["SpacetimeDB", "TypeScript"],
-    featured: true,
-  },
-  {
-    id: "orbit-runner",
-    name: "Orbit Runner",
-    playHref: "https://orbital-runner.vercel.app/",
-    stack: ["HTML5", "SpacetimeDB"],
     featured: true,
   },
   {
@@ -155,6 +155,13 @@ export const games = [
     name: "Stack Rivals",
     playHref: "https://stack-rivals.vercel.app/",
     stack: ["Canvas 2D", "TypeScript", "CrazyGames SDK"],
+    featured: false,
+  },
+  {
+    id: "orbit-runner",
+    name: "Orbit Runner",
+    playHref: "https://orbital-runner.vercel.app/",
+    stack: ["HTML5", "SpacetimeDB"],
     featured: false,
   },
   {
