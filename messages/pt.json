@@ -149,6 +149,10 @@
     "heading": "Experimentos de jogos web",
     "intro": "Ideias menores feitas para o navegador: protótipos, demos técnicas e jogos ainda encontrando sua forma. Cada um com uma etiqueta honesta sobre onde realmente está.",
     "items": {
+      "brinewake": {
+        "status": "Jogável, em desenvolvimento",
+        "blurb": "MMO-RPG naval em 3D: navegue por cinco mares, afunde monstros marinhos e capitães rivais, cumpra missões nos portos e evolua de um cúter de 2 canhões até uma nau de guerra de 20. Solo por enquanto, feito para multiplayer."
+      },
       "shooting-stars-3d": {
         "status": "Jogável, em desenvolvimento",
         "blurb": "Tower defense incremental em 3D: assuma o canhão antiaéreo, antecipe os tiros para derrubar os bombardeiros e invista a sucata em construções e pesquisa. Todo modelo é gerado por código."
